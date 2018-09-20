@@ -5,6 +5,8 @@ import java.util.List;
 
 public class BibliotecaApp {
 
+    private static final String BOOK_DETAILS_FORMAT_STRING = "%n%-40s | %-20s | %4s";
+
     public static void main(String[] args) {
         System.out.println(welcome());
         System.out.println(formatBookList(listBooks()));
@@ -30,13 +32,11 @@ public class BibliotecaApp {
             return sb.toString();
         }
 
+        sb.append(String.format(BOOK_DETAILS_FORMAT_STRING, "Title", "Author", "Year"));
+        sb.append("\n----------------------------------------------------------------------");
+
         for (Book book : bookList) {
-            sb.append(System.lineSeparator());
-            sb.append(book.getTitle());
-            sb.append("\t");
-            sb.append(book.getAuthor());
-            sb.append("\t");
-            sb.append(book.getYear());
+            sb.append(String.format(BOOK_DETAILS_FORMAT_STRING, book.getTitle(), book.getAuthor(), book.getYear()));
         }
 
         return sb.toString();
