@@ -18,7 +18,22 @@ public class BibliotecaApp {
         return Arrays.asList(new Book("TDD"), new Book("Refactoring"));
     }
 
-    private static String formatBookList(List<Book> bookList) {
-        return "Books:\nTDD\nRefactoring";
+    static String formatBookList(List<Book> bookList) {
+        if (bookList == null) {
+            return null;
+        }
+
+        StringBuilder sb = new StringBuilder("Books:");
+
+        if (bookList.isEmpty()) {
+            return sb.toString();
+        }
+
+        for (Book book : bookList) {
+            sb.append(System.lineSeparator());
+            sb.append(book.getTitle());
+        }
+
+        return sb.toString();
     }
 }
