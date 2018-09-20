@@ -15,7 +15,8 @@ public class BibliotecaApp {
     }
 
     static List<Book> listBooks() {
-        return Arrays.asList(new Book("TDD"), new Book("Refactoring"));
+        return Arrays.asList(
+                new Book("TDD", "Kent", 2002), new Book("Refactoring", "Martin", 1999));
     }
 
     static String formatBookList(List<Book> bookList) {

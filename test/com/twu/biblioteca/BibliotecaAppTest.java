@@ -21,9 +21,15 @@ public class BibliotecaAppTest {
     private static final String EOL = System.lineSeparator();
 
     private static final String BOOK1_TITLE = "TDD";
-    private static final String BOOK2_TITLE = "Refactoring";
+    private static final String BOOK1_AUTHOR = "Kent";
+    private static final int BOOK1_YEAR = 2002;
 
-    private static final List BOOK_LIST = Arrays.asList(new Book(BOOK1_TITLE), new Book(BOOK2_TITLE));
+    private static final String BOOK2_TITLE = "Refactoring";
+    private static final String BOOK2_AUTHOR = "Martin";
+    private static final int BOOK2_YEAR = 1999;
+
+    private static final List BOOK_LIST = Arrays.asList(
+            new Book(BOOK1_TITLE, BOOK1_AUTHOR, BOOK1_YEAR), new Book(BOOK2_TITLE, BOOK2_AUTHOR, BOOK2_YEAR));
 
     private static final String OUTPUT_WELCOME = "Welcome!";
     private static final String OUTPUT_BOOK_LIST_HEADER = "Books:";
@@ -64,13 +70,13 @@ public class BibliotecaAppTest {
 
         assertEquals(OUTPUT_BOOK_LIST_HEADER, BibliotecaApp.formatBookList(Collections.emptyList()));
 
-        String title1 = "Book one";
-        assertEquals(OUTPUT_BOOK_LIST_HEADER + EOL + title1,
-                BibliotecaApp.formatBookList(Collections.singletonList(new Book(title1))));
+        assertEquals(OUTPUT_BOOK_LIST_HEADER + EOL + BOOK1_TITLE, BibliotecaApp.formatBookList(
+                Collections.singletonList(new Book(BOOK1_TITLE, BOOK1_AUTHOR, BOOK1_YEAR))));
 
-        String title2 = "Book two";
-        assertEquals(OUTPUT_BOOK_LIST_HEADER + EOL + title1 + EOL + title2,
-                BibliotecaApp.formatBookList(Arrays.asList(new Book(title1), new Book(title2))));
+        assertEquals(OUTPUT_BOOK_LIST_HEADER + EOL + BOOK1_TITLE + EOL + BOOK2_TITLE,
+                BibliotecaApp.formatBookList(Arrays.asList(
+                        new Book(BOOK1_TITLE, BOOK1_AUTHOR, BOOK1_YEAR),
+                        new Book(BOOK2_TITLE, BOOK2_AUTHOR, BOOK2_YEAR))));
     }
 
     @Test
