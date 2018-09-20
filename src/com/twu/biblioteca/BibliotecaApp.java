@@ -26,12 +26,11 @@ public class BibliotecaApp {
             return null;
         }
 
-        StringBuilder sb = new StringBuilder("Books:");
-
         if (bookList.isEmpty()) {
-            return sb.toString();
+            return "No books!";
         }
 
+        StringBuilder sb = new StringBuilder("Books:");
         sb.append(String.format(BOOK_DETAILS_FORMAT_STRING, "Title", "Author", "Year"));
         sb.append("\n----------------------------------------------------------------------");
 

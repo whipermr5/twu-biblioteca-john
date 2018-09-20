@@ -19,7 +19,6 @@ import static org.junit.Assert.assertThat;
 public class BibliotecaAppTest {
 
     private static final String EOL = System.lineSeparator();
-    private static final String TAB = "\t";
 
     private static final String BOOK1_TITLE = "TDD";
     private static final String BOOK1_AUTHOR = "Kent";
@@ -35,12 +34,11 @@ public class BibliotecaAppTest {
     private static final String BOOK_DETAILS_FORMAT_STRING = "%n%-40s | %-20s | %4s";
 
     private static final String OUTPUT_WELCOME = "Welcome!";
-    private static final String OUTPUT_BOOK_LIST_HEADER = "Books:";
-    private static final String OUTPUT_BOOK_LIST_DETAILS_HEADER =
-            String.format(BOOK_DETAILS_FORMAT_STRING, "Title", "Author", "Year")
-            + "\n----------------------------------------------------------------------";
-    private static final String OUTPUT_BOOK_LIST = OUTPUT_BOOK_LIST_HEADER
-            + OUTPUT_BOOK_LIST_DETAILS_HEADER
+    private static final String OUTPUT_BOOK_LIST_NONE = "No books!";
+    private static final String OUTPUT_BOOK_LIST_DETAILS_HEADER = "Books:"
+            + String.format(BOOK_DETAILS_FORMAT_STRING, "Title", "Author", "Year") + EOL
+            + "----------------------------------------------------------------------";
+    private static final String OUTPUT_BOOK_LIST = OUTPUT_BOOK_LIST_DETAILS_HEADER
             + String.format(BOOK_DETAILS_FORMAT_STRING, BOOK1_TITLE, BOOK1_AUTHOR, BOOK1_YEAR)
             + String.format(BOOK_DETAILS_FORMAT_STRING, BOOK2_TITLE, BOOK2_AUTHOR, BOOK2_YEAR);
 
@@ -77,14 +75,14 @@ public class BibliotecaAppTest {
     public void formatBookListTest() {
         assertNull(BibliotecaApp.formatBookList(null));
 
-        assertEquals(OUTPUT_BOOK_LIST_HEADER, BibliotecaApp.formatBookList(Collections.emptyList()));
+        assertEquals(OUTPUT_BOOK_LIST_NONE, BibliotecaApp.formatBookList(Collections.emptyList()));
 
-        assertEquals(OUTPUT_BOOK_LIST_HEADER + OUTPUT_BOOK_LIST_DETAILS_HEADER
+        assertEquals(OUTPUT_BOOK_LIST_DETAILS_HEADER
                         + String.format(BOOK_DETAILS_FORMAT_STRING, BOOK1_TITLE, BOOK1_AUTHOR, BOOK1_YEAR),
                 BibliotecaApp.formatBookList(Collections.singletonList(
                         new Book(BOOK1_TITLE, BOOK1_AUTHOR, BOOK1_YEAR))));
 
-        assertEquals(OUTPUT_BOOK_LIST_HEADER + OUTPUT_BOOK_LIST_DETAILS_HEADER
+        assertEquals(OUTPUT_BOOK_LIST_DETAILS_HEADER
                         + String.format(BOOK_DETAILS_FORMAT_STRING, BOOK1_TITLE, BOOK1_AUTHOR, BOOK1_YEAR)
                         + String.format(BOOK_DETAILS_FORMAT_STRING, BOOK2_TITLE, BOOK2_AUTHOR, BOOK2_YEAR),
                 BibliotecaApp.formatBookList(Arrays.asList(
