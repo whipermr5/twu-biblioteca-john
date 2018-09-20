@@ -12,6 +12,9 @@ import static org.junit.Assert.assertTrue;
 
 public class BibliotecaAppTest {
 
+    private static final String WELCOME = "Welcome!";
+    private static final String BOOK_LIST = "Books:";
+
     private ByteArrayOutputStream outStream = new ByteArrayOutputStream();
     private PrintStream stdoutStream = System.out;
 
@@ -28,6 +31,12 @@ public class BibliotecaAppTest {
     @Test
     public void welcomeTest() {
         BibliotecaApp.main(new String[] {});
-        assertTrue(outStream.toString().startsWith("Welcome!"));
+        assertTrue(outStream.toString().startsWith(WELCOME));
+    }
+
+    @Test
+    public void listBooksTest() {
+        BibliotecaApp.main(new String[] {});
+        assertTrue(outStream.toString().startsWith(WELCOME + System.lineSeparator() + BOOK_LIST));
     }
 }
