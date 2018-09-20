@@ -30,13 +30,13 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void welcomeTest() {
+    public void welcomeOutputTest() {
         BibliotecaApp.main(new String[] {});
         assertOutputStartsWith(WELCOME);
     }
 
     @Test
-    public void listBooksTest() {
+    public void listBooksOutputTest() {
         BibliotecaApp.main(new String[] {});
         assertOutputStartsWith(WELCOME + System.lineSeparator() + BOOK_LIST);
     }
