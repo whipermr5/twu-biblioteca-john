@@ -7,11 +7,11 @@ public class BibliotecaApp {
         System.out.println(listBooks());
     }
 
-    private static String welcome() {
+    static String welcome() {
         return "Welcome!";
     }
 
-    private static String listBooks() {
+    static String listBooks() {
         return "Books:";
     }
 }
