@@ -18,11 +18,16 @@ import static org.junit.Assert.assertThat;
 
 public class BibliotecaAppTest {
 
+    private static final String EOL = System.lineSeparator();
+
+    private static final String BOOK1_TITLE = "TDD";
+    private static final String BOOK2_TITLE = "Refactoring";
+
+    private static final List BOOK_LIST = Arrays.asList(new Book(BOOK1_TITLE), new Book(BOOK2_TITLE));
+
     private static final String OUTPUT_WELCOME = "Welcome!";
     private static final String OUTPUT_BOOK_LIST_HEADER = "Books:";
-    private static final String OUTPUT_BOOK_LIST = OUTPUT_BOOK_LIST_HEADER + "\nTDD\nRefactoring";
-
-    private static final List BOOK_LIST = Arrays.asList(new Book("TDD"), new Book("Refactoring"));
+    private static final String OUTPUT_BOOK_LIST = OUTPUT_BOOK_LIST_HEADER + EOL + BOOK1_TITLE + EOL + BOOK2_TITLE;
 
     private ByteArrayOutputStream outStream = new ByteArrayOutputStream();
     private PrintStream stdoutStream = System.out;
@@ -60,20 +65,18 @@ public class BibliotecaAppTest {
         assertEquals(OUTPUT_BOOK_LIST_HEADER, BibliotecaApp.formatBookList(Collections.emptyList()));
 
         String title1 = "Book one";
-        assertEquals(OUTPUT_BOOK_LIST_HEADER + System.lineSeparator() + title1,
+        assertEquals(OUTPUT_BOOK_LIST_HEADER + EOL + title1,
                 BibliotecaApp.formatBookList(Collections.singletonList(new Book(title1))));
 
         String title2 = "Book two";
-        assertEquals(OUTPUT_BOOK_LIST_HEADER + System.lineSeparator() +
-                        title1 + System.lineSeparator() +
-                        title2,
+        assertEquals(OUTPUT_BOOK_LIST_HEADER + EOL + title1 + EOL + title2,
                 BibliotecaApp.formatBookList(Arrays.asList(new Book(title1), new Book(title2))));
     }
 
     @Test
     public void formatBookListOutputTest() {
         BibliotecaApp.main(new String[] {});
-        assertOutputStartsWith(OUTPUT_WELCOME + System.lineSeparator() + OUTPUT_BOOK_LIST);
+        assertOutputStartsWith(OUTPUT_WELCOME + EOL + OUTPUT_BOOK_LIST);
     }
 
     private String getOutput() {
