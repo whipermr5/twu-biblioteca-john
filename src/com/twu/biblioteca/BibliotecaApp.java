@@ -6,7 +6,7 @@ public class BibliotecaApp {
         System.out.println(welcome());
     }
 
-    static String welcome() {
+    private static String welcome() {
         return "Welcome!";
     }
 }
