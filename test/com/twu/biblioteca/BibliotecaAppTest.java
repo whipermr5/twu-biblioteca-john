@@ -19,6 +19,7 @@ import static org.junit.Assert.assertThat;
 public class BibliotecaAppTest {
 
     private static final String EOL = System.lineSeparator();
+    private static final String TAB = "\t";
 
     private static final String BOOK1_TITLE = "TDD";
     private static final String BOOK1_AUTHOR = "Kent";
@@ -33,7 +34,9 @@ public class BibliotecaAppTest {
 
     private static final String OUTPUT_WELCOME = "Welcome!";
     private static final String OUTPUT_BOOK_LIST_HEADER = "Books:";
-    private static final String OUTPUT_BOOK_LIST = OUTPUT_BOOK_LIST_HEADER + EOL + BOOK1_TITLE + EOL + BOOK2_TITLE;
+    private static final String OUTPUT_BOOK_LIST = OUTPUT_BOOK_LIST_HEADER + EOL
+            + BOOK1_TITLE + TAB + BOOK1_AUTHOR + TAB + BOOK1_YEAR + EOL
+            + BOOK2_TITLE + TAB + BOOK2_AUTHOR + TAB + BOOK2_YEAR;
 
     private ByteArrayOutputStream outStream = new ByteArrayOutputStream();
     private PrintStream stdoutStream = System.out;
@@ -70,10 +73,12 @@ public class BibliotecaAppTest {
 
         assertEquals(OUTPUT_BOOK_LIST_HEADER, BibliotecaApp.formatBookList(Collections.emptyList()));
 
-        assertEquals(OUTPUT_BOOK_LIST_HEADER + EOL + BOOK1_TITLE, BibliotecaApp.formatBookList(
-                Collections.singletonList(new Book(BOOK1_TITLE, BOOK1_AUTHOR, BOOK1_YEAR))));
+        assertEquals(OUTPUT_BOOK_LIST_HEADER + EOL + BOOK1_TITLE + TAB + BOOK1_AUTHOR + TAB + BOOK1_YEAR,
+                BibliotecaApp.formatBookList(Collections.singletonList(
+                        new Book(BOOK1_TITLE, BOOK1_AUTHOR, BOOK1_YEAR))));
 
-        assertEquals(OUTPUT_BOOK_LIST_HEADER + EOL + BOOK1_TITLE + EOL + BOOK2_TITLE,
+        assertEquals(OUTPUT_BOOK_LIST_HEADER + EOL + BOOK1_TITLE + TAB + BOOK1_AUTHOR + TAB + BOOK1_YEAR + EOL
+                        + BOOK2_TITLE + TAB + BOOK2_AUTHOR + TAB + BOOK2_YEAR,
                 BibliotecaApp.formatBookList(Arrays.asList(
                         new Book(BOOK1_TITLE, BOOK1_AUTHOR, BOOK1_YEAR),
                         new Book(BOOK2_TITLE, BOOK2_AUTHOR, BOOK2_YEAR))));

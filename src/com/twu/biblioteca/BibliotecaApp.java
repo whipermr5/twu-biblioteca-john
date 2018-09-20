@@ -33,6 +33,10 @@ public class BibliotecaApp {
         for (Book book : bookList) {
             sb.append(System.lineSeparator());
             sb.append(book.getTitle());
+            sb.append("\t");
+            sb.append(book.getAuthor());
+            sb.append("\t");
+            sb.append(book.getYear());
         }
 
         return sb.toString();
