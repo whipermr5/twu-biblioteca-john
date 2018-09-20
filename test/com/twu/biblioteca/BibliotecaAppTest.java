@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 
+import org.hamcrest.core.StringStartsWith;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +9,7 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertThat;
 
 public class BibliotecaAppTest {
 
@@ -31,12 +32,20 @@ public class BibliotecaAppTest {
     @Test
     public void welcomeTest() {
         BibliotecaApp.main(new String[] {});
-        assertTrue(outStream.toString().startsWith(WELCOME));
+        assertOutputStartsWith(WELCOME);
     }
 
     @Test
     public void listBooksTest() {
         BibliotecaApp.main(new String[] {});
-        assertTrue(outStream.toString().startsWith(WELCOME + System.lineSeparator() + BOOK_LIST));
+        assertOutputStartsWith(WELCOME + System.lineSeparator() + BOOK_LIST);
+    }
+
+    private String getOutput() {
+        return outStream.toString();
+    }
+
+    private void assertOutputStartsWith(String expected) {
+        assertThat(getOutput(), StringStartsWith.startsWith(expected));
     }
 }
