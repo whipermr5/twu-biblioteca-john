@@ -11,4 +11,6 @@ abstract class Command {
         }
         return new InvalidCommand();
     }
+
+    abstract String execute(Library library);
 }
