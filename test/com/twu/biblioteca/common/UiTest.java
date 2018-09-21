@@ -21,7 +21,7 @@ public class UiTest {
         String messageToUser = "Message to user";
         String actualInput = Ui.getUserInput(inStream, outStream, messageToUser);
         assertEquals(expectedInput, actualInput);
-        assertEquals(messageToUser, outStream.toString());
+        assertEquals(messageToUser + System.lineSeparator(), outStream.toString());
     }
 
     @Test

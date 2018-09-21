@@ -17,7 +17,7 @@ public class Ui {
             + ID_LIST_BOOKS + " - List Books" + System.lineSeparator()
             + ID_CHECKOUT + " - Checkout Book" + System.lineSeparator()
             + ID_QUIT + " - Quit" + System.lineSeparator()
-            + "Please select an option.";
+            + "Please select an option: ";
     public static final String INVALID_OPTION = "Select a valid option!";
     public static final String CHECKOUT_SUCCESS = "Thank you! Enjoy the book";
     public static final String CHECKOUT_FAILURE = "That book is not available.";
@@ -30,9 +30,12 @@ public class Ui {
             + "---------------------------------------------------------------------------";
 
     public static String getUserInput(InputStream in, OutputStream out, String messageToUser) {
-        new PrintStream(out).print(messageToUser);
+        PrintStream outStream = new PrintStream(out);
+        outStream.print(messageToUser);
         Scanner scanner = new Scanner(in);
-        return scanner.nextLine();
+        String userInput = scanner.nextLine();
+        outStream.println();
+        return userInput;
     }
 
     public static String formatBookList(List<Book> books) {
