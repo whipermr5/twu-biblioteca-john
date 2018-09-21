@@ -12,7 +12,7 @@ public class ListBooksCommandTest {
     public void testExecute() {
         Command command = CommandFactory.get(Ui.ID_LIST_BOOKS);
         Library library = new Library();
-        String output = command.execute(library);
+        String output = command.execute(library, null);
         assertEquals(Ui.formatBookList(library.getAvailableBooks()), output);
     }
 }

@@ -5,9 +5,9 @@ import com.twu.biblioteca.common.Ui;
 
 import java.io.InputStream;
 
-public class InvalidCommand extends Command {
+public class CheckoutCommand extends Command {
 
     public String execute(Library library, InputStream in) {
-        return Ui.INVALID_OPTION;
+        return Ui.CHECKOUT_SUCCESS;
     }
 }

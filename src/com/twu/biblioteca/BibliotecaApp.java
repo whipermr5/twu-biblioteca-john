@@ -16,7 +16,7 @@ public class BibliotecaApp {
         Command command;
         do {
             command = getUserChoice();
-            String output = command.execute(library);
+            String output = command.execute(library, System.in);
             System.out.println(output);
 
         } while (!QuitCommand.class.equals(command.getClass()));

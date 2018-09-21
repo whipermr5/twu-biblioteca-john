@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Ui {
 
     public static final String ID_LIST_BOOKS = "l";
+    public static final String ID_CHECKOUT = "c";
     public static final String ID_QUIT = "q";
 
     public static final String WELCOME = "Welcome!";
@@ -14,6 +15,7 @@ public class Ui {
             + ID_LIST_BOOKS + " - List Books" + System.lineSeparator()
             + ID_QUIT + " - Quit";
     public static final String INVALID_OPTION = "Select a valid option!";
+    public static final String CHECKOUT_SUCCESS = "Thank you! Enjoy the book";
     public static final String GOODBYE = "Goodbye!";
 
     static final String NO_BOOKS = "No books!";

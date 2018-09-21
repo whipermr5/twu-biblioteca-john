@@ -10,6 +10,6 @@ public class InvalidCommandTest {
     @Test
     public void testExecute() {
         Command command = CommandFactory.get("abc");
-        assertEquals(Ui.INVALID_OPTION, command.execute(null));
+        assertEquals(Ui.INVALID_OPTION, command.execute(null, null));
     }
 }
