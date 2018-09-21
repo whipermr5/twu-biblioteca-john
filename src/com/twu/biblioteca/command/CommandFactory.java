@@ -11,6 +11,9 @@ public class CommandFactory {
         if (Ui.ID_CHECKOUT.equals(userInput)) {
             return new CheckoutCommand();
         }
+        if (Ui.ID_RETURN.equals(userInput)) {
+            return new ReturnCommand();
+        }
         if (Ui.ID_QUIT.equals(userInput)) {
             return new QuitCommand();
         }
