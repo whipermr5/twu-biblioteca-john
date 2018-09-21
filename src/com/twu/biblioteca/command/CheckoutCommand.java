@@ -8,6 +8,8 @@ import java.io.InputStream;
 public class CheckoutCommand extends Command {
 
     public String execute(Library library, InputStream in) {
-        return Ui.CHECKOUT_SUCCESS;
+        String bookId = Ui.getUserInput(in);
+        boolean wasSuccessful = library.checkout(bookId, "user");
+        return wasSuccessful ? Ui.CHECKOUT_SUCCESS : Ui.CHECKOUT_FAILURE;
     }
 }

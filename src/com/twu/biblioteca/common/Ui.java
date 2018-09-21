@@ -16,6 +16,7 @@ public class Ui {
             + ID_QUIT + " - Quit";
     public static final String INVALID_OPTION = "Select a valid option!";
     public static final String CHECKOUT_SUCCESS = "Thank you! Enjoy the book";
+    public static final String CHECKOUT_FAILURE = "That book is not available.";
     public static final String GOODBYE = "Goodbye!";
 
     static final String NO_BOOKS = "No books!";

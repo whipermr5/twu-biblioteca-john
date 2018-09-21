@@ -9,6 +9,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class CheckoutCommandTest {
 
@@ -19,6 +20,12 @@ public class CheckoutCommandTest {
         InputStream in = new ByteArrayInputStream(book.getId().getBytes());
 
         Command command = CommandFactory.get(Ui.ID_CHECKOUT);
-        assertEquals(Ui.CHECKOUT_SUCCESS, command.execute(library, in));
+        String output = command.execute(library, in);
+        assertEquals(Ui.CHECKOUT_SUCCESS, output);
+        assertFalse(library.getAvailableBooks().contains(book));
+
+        in = new ByteArrayInputStream(book.getId().getBytes());
+        output = command.execute(library, in);
+        assertEquals(Ui.CHECKOUT_FAILURE, output);
     }
 }
