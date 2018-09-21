@@ -8,8 +8,8 @@ public class CommandFactoryTest {
 
     @Test
     public void testGet() {
-        assertEquals(ListBooksCommand.class, CommandFactory.get("1").getClass());
-        assertEquals(QuitCommand.class, CommandFactory.get("q").getClass());
+        assertEquals(ListBooksCommand.class, CommandFactory.get(Ui.ID_LIST_BOOKS).getClass());
+        assertEquals(QuitCommand.class, CommandFactory.get(Ui.ID_QUIT).getClass());
         assertEquals(InvalidCommand.class, CommandFactory.get("abc").getClass());
     }
 }

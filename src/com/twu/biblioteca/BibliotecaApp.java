@@ -17,8 +17,11 @@ public class BibliotecaApp {
     }
 
     static Command getUserChoice() {
+        System.out.println();
         System.out.println(Ui.MENU);
         String userInput = Ui.getUserInput(System.in);
+        System.out.println();
+
         return CommandFactory.get(userInput);
     }
 }

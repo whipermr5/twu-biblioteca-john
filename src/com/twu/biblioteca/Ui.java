@@ -6,12 +6,15 @@ import java.util.Scanner;
 
 class Ui {
 
+    static final String ID_LIST_BOOKS = "l";
+    static final String ID_QUIT = "q";
+
     private static final String BOOK_DETAILS_FORMAT_STRING = "%n%-40s | %-20s | %4s";
 
     static final String WELCOME = "Welcome!";
     static final String MENU = "Please select an option:" + System.lineSeparator()
-            + "1. List Books" + System.lineSeparator()
-            + "q. Quit";
+            + ID_LIST_BOOKS + " - List Books" + System.lineSeparator()
+            + ID_QUIT + " - Quit";
     static final String INVALID_OPTION = "Select a valid option!";
     static final String GOODBYE = "Goodbye!";
 

@@ -8,7 +8,7 @@ public class ListBooksCommandTest {
 
     @Test
     public void testExecute() {
-        Command command = CommandFactory.get("1");
+        Command command = CommandFactory.get(Ui.ID_LIST_BOOKS);
         String output = command.execute(new Library());
         assertEquals("Books:\n" +
                 "Title                                    | Author               | Year\n" +

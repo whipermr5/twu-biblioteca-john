@@ -23,7 +23,7 @@ public class BibliotecaAppTest {
     @Before
     public void setUpStream() {
         System.setOut(new PrintStream(outStream));
-        System.setIn(new ByteArrayInputStream("q".getBytes()));
+        System.setIn(new ByteArrayInputStream(Ui.ID_QUIT.getBytes()));
     }
 
     @After
@@ -41,12 +41,12 @@ public class BibliotecaAppTest {
     @Test
     public void testGetUserChoice() {
         BibliotecaApp.getUserChoice();
-        assertOutputStartsWith(Ui.MENU);
+        assertOutputStartsWith(System.lineSeparator() + Ui.MENU);
 
-        System.setIn(getInputStream("1"));
+        System.setIn(getInputStream(Ui.ID_LIST_BOOKS));
         assertEquals(ListBooksCommand.class, BibliotecaApp.getUserChoice().getClass());
 
-        System.setIn(getInputStream("q"));
+        System.setIn(getInputStream(Ui.ID_QUIT));
         assertEquals(QuitCommand.class, BibliotecaApp.getUserChoice().getClass());
     }
 
