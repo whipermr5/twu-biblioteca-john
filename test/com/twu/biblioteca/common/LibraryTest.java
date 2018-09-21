@@ -3,9 +3,12 @@ package com.twu.biblioteca.common;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 public class LibraryTest {
@@ -34,15 +37,13 @@ public class LibraryTest {
 
     @Test
     public void testCheckout() {
-        assertTrue(library.getAvailableBooks().contains(firstBook));
-        assertTrue(library.getAvailableBooks().contains(secondBook));
+        List<Book> originalBooks = library.getAvailableBooks();
+        assertEquals(Arrays.asList(firstBook, secondBook), originalBooks);
         assertTrue(library.checkout(firstBook.getId(), "user"));
-        assertFalse(library.getAvailableBooks().contains(firstBook));
+        assertEquals(Collections.singletonList(secondBook), library.getAvailableBooks());
 
-        assertTrue(library.getAvailableBooks().contains(secondBook));
         assertTrue(library.checkout(secondBook.getId(), "user"));
-        assertFalse(library.getAvailableBooks().contains(firstBook));
-        assertFalse(library.getAvailableBooks().contains(secondBook));
+        assertTrue(library.getAvailableBooks().isEmpty());
 
         assertFalse(library.checkout(secondBook.getId(), "user"));
     }
