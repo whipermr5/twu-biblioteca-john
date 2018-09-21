@@ -8,4 +8,9 @@ public class BibliotecaApp {
         System.out.println(Ui.WELCOME);
         System.out.println(Ui.MENU);
     }
+
+    static Command getUserChoice() {
+        String userInput = Ui.getUserInput(System.in);
+        return Command.get(userInput);
+    }
 }
