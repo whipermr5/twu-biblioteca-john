@@ -16,7 +16,7 @@ public class CheckoutCommandTest {
     public void testExecute() {
         Library library = new Library();
         Book book = library.getAvailableBooks().iterator().next();
-        InputStream in = new ByteArrayInputStream(Integer.toString(book.getId()).getBytes());
+        InputStream in = new ByteArrayInputStream(book.getId().getBytes());
 
         Command command = CommandFactory.get(Ui.ID_CHECKOUT);
         assertEquals(Ui.CHECKOUT_SUCCESS, command.execute(library, in));

@@ -13,9 +13,9 @@ public class Library {
         return books.stream().filter(Book::isAvailable).collect(Collectors.toList());
     }
 
-    public boolean checkout(int bookId, String ownerId) {
+    public boolean checkout(String bookId, String ownerId) {
         for (Book book : getAvailableBooks()) {
-            if (book.getId() == bookId) {
+            if (book.getId().equals(bookId)) {
                 book.setOwner(ownerId);
                 return true;
             }

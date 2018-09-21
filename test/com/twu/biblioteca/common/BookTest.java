@@ -9,12 +9,12 @@ public class BookTest {
     @Test
     public void testId() {
         Book book1 = new Book(null, null, 0);
-        int book1Id = book1.getId();
+        int book1NumericalId = Integer.parseInt(book1.getId());
 
         Book book2 = new Book(null, null, 0);
-        assertEquals(book1Id + 1, book2.getId());
+        assertEquals(String.valueOf(book1NumericalId + 1), book2.getId());
 
-        assertEquals( book1Id, book1.getId());
+        assertEquals(String.valueOf(book1NumericalId), book1.getId());
     }
 
     @Test

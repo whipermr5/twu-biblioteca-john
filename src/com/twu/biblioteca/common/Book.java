@@ -9,19 +9,19 @@ public class Book {
     private int year;
     private String owner;
 
-    public Book(String title, String author, int year) {
+    Book(String title, String author, int year) {
         this.id = ++count;
         this.title = title;
         this.author = author;
         this.year = year;
     }
 
-    public void setOwner(String owner) {
+    void setOwner(String owner) {
         this.owner = owner;
     }
 
-    public int getId() {
-        return id;
+    public String getId() {
+        return Integer.toString(id);
     }
 
     public String getTitle() {
