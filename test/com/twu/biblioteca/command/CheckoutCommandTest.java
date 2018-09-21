@@ -37,5 +37,18 @@ public class CheckoutCommandTest {
                 + Ui.CHECKOUT_FAILURE + System.lineSeparator();
         command.execute(library, in, out);
         assertEquals(expected, out.toString());
+
+        Book remainingBook = library.getAvailableBooks().iterator().next();
+        in = new ByteArrayInputStream(remainingBook.getId().getBytes());
+        out = new ByteArrayOutputStream();
+        expected = Ui.formatBookList(library.getAvailableBooks()) + System.lineSeparator()
+                + Ui.SELECT_BOOK + System.lineSeparator()
+                + Ui.CHECKOUT_SUCCESS + System.lineSeparator();
+        command.execute(library, in, out);
+        assertEquals(expected, out.toString());
+
+        out = new ByteArrayOutputStream();
+        command.execute(library, null, out);
+        assertEquals(Ui.NO_BOOKS + System.lineSeparator(), out.toString());
     }
 }

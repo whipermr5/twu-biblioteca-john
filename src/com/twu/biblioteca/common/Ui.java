@@ -22,13 +22,13 @@ public class Ui {
             + "Please select an option: ";
     public static final String INVALID_OPTION = "Select a valid option!";
     public static final String SELECT_BOOK = "Please select a book: ";
+    public static final String NO_BOOKS = "No books!";
     public static final String CHECKOUT_SUCCESS = "Thank you! Enjoy the book";
     public static final String CHECKOUT_FAILURE = "That book is not available.";
     public static final String RETURN_SUCCESS = "Thank you for returning the book.";
     public static final String RETURN_FAILURE = "That is not a valid book to return.";
     public static final String GOODBYE = "Goodbye!";
 
-    static final String NO_BOOKS = "No books!";
     static final String BOOK_DETAILS_FORMAT_STRING = "%n%-2s | %-40s | %-20s | %4s";
     static final String BOOK_LIST_HEADER = "----------------------------- Available Books -----------------------------"
             + String.format(Ui.BOOK_DETAILS_FORMAT_STRING, "ID", "Title", "Author", "Year") + System.lineSeparator()

@@ -19,28 +19,35 @@ public class ReturnCommandTest {
     @Test
     public void testExecute() {
         Library library = new Library();
-        Book book = library.getAvailableBooks().iterator().next();
+        Book firstBook = library.getAvailableBooks().get(0);
+        Book secondBook = library.getAvailableBooks().get(1);
 
-        library.checkout(book.getId(), "user");
-        assertEquals(Collections.singletonList(book), library.getCustomerBooks("user"));
-
-        InputStream in = new ByteArrayInputStream(book.getId().getBytes());
         OutputStream out = new ByteArrayOutputStream();
 
         Command command = CommandFactory.get(Ui.ID_RETURN);
-        String expected = Ui.formatBookList(library.getCustomerBooks("user")) + System.lineSeparator()
-                + Ui.SELECT_BOOK + System.lineSeparator()
-                + Ui.RETURN_SUCCESS + System.lineSeparator();
-        command.execute(library, in, out);
-        assertEquals(expected, out.toString());
-        assertFalse(library.getCustomerBooks("user").contains(book));
+        command.execute(library, null, out);
+        assertEquals(Ui.NO_BOOKS + System.lineSeparator(), out.toString());
 
-        in = new ByteArrayInputStream(book.getId().getBytes());
+        library.checkout(firstBook.getId(), "user");
+        assertEquals(Collections.singletonList(firstBook), library.getCustomerBooks("user"));
+
+        InputStream in = new ByteArrayInputStream(secondBook.getId().getBytes());
         out = new ByteArrayOutputStream();
-        expected = Ui.formatBookList(library.getCustomerBooks("user")) + System.lineSeparator()
+
+        String expected = Ui.formatBookList(library.getCustomerBooks("user")) + System.lineSeparator()
                 + Ui.SELECT_BOOK + System.lineSeparator()
                 + Ui.RETURN_FAILURE + System.lineSeparator();
         command.execute(library, in, out);
         assertEquals(expected, out.toString());
+
+        in = new ByteArrayInputStream(firstBook.getId().getBytes());
+        out = new ByteArrayOutputStream();
+
+        expected = Ui.formatBookList(library.getCustomerBooks("user")) + System.lineSeparator()
+                + Ui.SELECT_BOOK + System.lineSeparator()
+                + Ui.RETURN_SUCCESS + System.lineSeparator();
+        command.execute(library, in, out);
+        assertEquals(expected, out.toString());
+        assertFalse(library.getCustomerBooks("user").contains(firstBook));
     }
 }

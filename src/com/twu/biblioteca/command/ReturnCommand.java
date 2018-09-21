@@ -9,6 +9,10 @@ import java.io.PrintStream;
 public class ReturnCommand extends Command {
 
     public void execute(Library library, InputStream in, PrintStream out) {
+        if (library.getCustomerBooks("user").isEmpty()) {
+            out.println(Ui.NO_BOOKS);
+            return;
+        }
         out.println(Ui.formatBookList(library.getCustomerBooks("user")));
         String bookId = Ui.getUserInput(in, out, Ui.SELECT_BOOK);
         boolean wasSuccessful = library.returnBook(bookId, "user");
