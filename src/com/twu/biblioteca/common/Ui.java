@@ -26,7 +26,7 @@ public class Ui {
 
     static final String NO_BOOKS = "No books!";
     static final String BOOK_DETAILS_FORMAT_STRING = "%n%-2s | %-40s | %-20s | %4s";
-    static final String BOOK_LIST_HEADER = "Books:"
+    static final String BOOK_LIST_HEADER = "----------------------------- Available Books -----------------------------"
             + String.format(Ui.BOOK_DETAILS_FORMAT_STRING, "ID", "Title", "Author", "Year") + System.lineSeparator()
             + "---------------------------------------------------------------------------";
 
