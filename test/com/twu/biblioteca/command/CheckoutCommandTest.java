@@ -23,12 +23,13 @@ public class CheckoutCommandTest {
         OutputStream out = new ByteArrayOutputStream();
 
         Command command = CommandFactory.get(Ui.ID_CHECKOUT);
-        String output = command.execute(library, in, out);
-        assertEquals(Ui.CHECKOUT_SUCCESS, output);
+        command.execute(library, in, out);
+        assertEquals(System.lineSeparator() + Ui.CHECKOUT_SUCCESS + System.lineSeparator(), out.toString());
         assertFalse(library.getAvailableBooks().contains(book));
 
         in = new ByteArrayInputStream(book.getId().getBytes());
-        output = command.execute(library, in, out);
-        assertEquals(Ui.CHECKOUT_FAILURE, output);
+        out = new ByteArrayOutputStream();
+        command.execute(library, in, out);
+        assertEquals(System.lineSeparator() + Ui.CHECKOUT_FAILURE + System.lineSeparator(), out.toString());
     }
 }

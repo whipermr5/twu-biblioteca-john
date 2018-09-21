@@ -7,5 +7,5 @@ import java.io.OutputStream;
 
 public abstract class Command {
 
-    public abstract String execute(Library library, InputStream in, OutputStream out);
+    public abstract void execute(Library library, InputStream in, OutputStream out);
 }

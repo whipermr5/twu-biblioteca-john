@@ -4,6 +4,8 @@ import com.twu.biblioteca.common.Library;
 import com.twu.biblioteca.common.Ui;
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
+
 import static org.junit.Assert.assertEquals;
 
 public class ListBooksCommandTest {
@@ -12,7 +14,8 @@ public class ListBooksCommandTest {
     public void testExecute() {
         Command command = CommandFactory.get(Ui.ID_LIST_BOOKS);
         Library library = new Library();
-        String output = command.execute(library, null, null);
-        assertEquals(Ui.formatBookList(library.getAvailableBooks()), output);
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        command.execute(library, null, out);
+        assertEquals(Ui.formatBookList(library.getAvailableBooks()) + System.lineSeparator(), out.toString());
     }
 }

@@ -5,10 +5,11 @@ import com.twu.biblioteca.common.Ui;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintStream;
 
 public class InvalidCommand extends Command {
 
-    public String execute(Library library, InputStream in, OutputStream out) {
-        return Ui.INVALID_OPTION;
+    public void execute(Library library, InputStream in, OutputStream out) {
+        new PrintStream(out).println(Ui.INVALID_OPTION);
     }
 }
