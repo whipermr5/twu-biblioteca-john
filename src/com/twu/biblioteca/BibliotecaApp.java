@@ -6,6 +6,14 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
         System.out.println(Ui.WELCOME);
+
+        Command command;
+        do {
+            command = getUserChoice();
+            String output = command.execute(library);
+            System.out.println(output);
+
+        } while (!QuitCommand.class.equals(command.getClass()));
     }
 
     static Command getUserChoice() {
