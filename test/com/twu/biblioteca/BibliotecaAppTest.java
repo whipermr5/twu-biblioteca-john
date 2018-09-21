@@ -21,46 +21,44 @@ public class BibliotecaAppTest {
 
     private ByteArrayOutputStream outStream = new ByteArrayOutputStream();
     private PrintStream stdoutStream = System.out;
+    private InputStream stdinStream = System.in;
 
     @Before
     public void setUpStream() {
         System.setOut(new PrintStream(outStream));
+        System.setIn(new ByteArrayInputStream("q".getBytes()));
     }
 
     @After
     public void restoreStream() {
         System.setOut(stdoutStream);
+        System.setIn(stdinStream);
     }
 
     @Test
-    public void welcomeOutputTest() {
+    public void testWelcome() {
         BibliotecaApp.main(new String[] {});
         assertOutputStartsWith(OUTPUT_WELCOME);
     }
 
     @Test
-    public void menuOutputTest() {
-        BibliotecaApp.main(new String[] {});
-        assertOutputStartsWith(OUTPUT_WELCOME + System.lineSeparator() + OUTPUT_MENU);
-    }
-
-    @Test
     public void testGetUserChoice() {
-        InputStream stdinStream = System.in;
+        BibliotecaApp.getUserChoice();
+        assertOutputStartsWith(OUTPUT_MENU);
 
-        ByteArrayInputStream inStream = new ByteArrayInputStream("1".getBytes());
-        System.setIn(inStream);
+        System.setIn(getInputStream("1"));
         assertEquals(ListBooksCommand.class, BibliotecaApp.getUserChoice().getClass());
 
-        inStream = new ByteArrayInputStream("q".getBytes());
-        System.setIn(inStream);
+        System.setIn(getInputStream("q"));
         assertEquals(QuitCommand.class, BibliotecaApp.getUserChoice().getClass());
-
-        System.setIn(stdinStream);
     }
 
     private String getOutput() {
         return outStream.toString();
+    }
+
+    private static InputStream getInputStream(String input) {
+        return new ByteArrayInputStream(input.getBytes());
     }
 
     private void assertOutputStartsWith(String expected) {

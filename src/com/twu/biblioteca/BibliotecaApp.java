@@ -6,10 +6,10 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
         System.out.println(Ui.WELCOME);
-        System.out.println(Ui.MENU);
     }
 
     static Command getUserChoice() {
+        System.out.println(Ui.MENU);
         String userInput = Ui.getUserInput(System.in);
         return Command.get(userInput);
     }
