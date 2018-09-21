@@ -16,9 +16,6 @@ import static org.junit.Assert.assertThat;
 
 public class BibliotecaAppTest {
 
-    private static final String OUTPUT_WELCOME = "Welcome!";
-    private static final String OUTPUT_MENU = "Please select an option:" + System.lineSeparator() + "1. List Books";
-
     private ByteArrayOutputStream outStream = new ByteArrayOutputStream();
     private PrintStream stdoutStream = System.out;
     private InputStream stdinStream = System.in;
@@ -38,13 +35,13 @@ public class BibliotecaAppTest {
     @Test
     public void testWelcome() {
         BibliotecaApp.main(new String[] {});
-        assertOutputStartsWith(OUTPUT_WELCOME);
+        assertOutputStartsWith(Ui.WELCOME);
     }
 
     @Test
     public void testGetUserChoice() {
         BibliotecaApp.getUserChoice();
-        assertOutputStartsWith(OUTPUT_MENU);
+        assertOutputStartsWith(Ui.MENU);
 
         System.setIn(getInputStream("1"));
         assertEquals(ListBooksCommand.class, BibliotecaApp.getUserChoice().getClass());

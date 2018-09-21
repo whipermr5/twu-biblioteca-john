@@ -9,6 +9,6 @@ public class InvalidCommandTest {
     @Test
     public void testExecute() {
         Command command = Command.get("abc");
-        assertEquals("Select a valid option!", command.execute(null));
+        assertEquals(Ui.INVALID_OPTION, command.execute(null));
     }
 }

@@ -9,6 +9,6 @@ public class QuitCommandTest {
     @Test
     public void testExecute() {
         Command command = Command.get("q");
-        assertEquals("Goodbye!", command.execute(null));
+        assertEquals(Ui.GOODBYE, command.execute(null));
     }
 }
