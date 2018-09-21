@@ -19,6 +19,7 @@ public class Ui {
             + ID_QUIT + " - Quit" + System.lineSeparator()
             + "Please select an option: ";
     public static final String INVALID_OPTION = "Select a valid option!";
+    public static final String SELECT_BOOK = "Please select a book: ";
     public static final String CHECKOUT_SUCCESS = "Thank you! Enjoy the book";
     public static final String CHECKOUT_FAILURE = "That book is not available.";
     public static final String GOODBYE = "Goodbye!";
