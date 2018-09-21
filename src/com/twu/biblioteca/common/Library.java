@@ -13,12 +13,13 @@ public class Library {
         return books.stream().filter(Book::isAvailable).collect(Collectors.toList());
     }
 
-    public void checkout(int bookId, String ownerId) {
-        for (Book book : books) {
+    public boolean checkout(int bookId, String ownerId) {
+        for (Book book : getAvailableBooks()) {
             if (book.getId() == bookId) {
                 book.setOwner(ownerId);
-                return;
+                return true;
             }
         }
+        return false;
     }
 }

@@ -36,12 +36,14 @@ public class LibraryTest {
     public void testCheckout() {
         assertTrue(library.getAvailableBooks().contains(firstBook));
         assertTrue(library.getAvailableBooks().contains(secondBook));
-        library.checkout(firstBook.getId(), "user");
+        assertTrue(library.checkout(firstBook.getId(), "user"));
         assertFalse(library.getAvailableBooks().contains(firstBook));
 
         assertTrue(library.getAvailableBooks().contains(secondBook));
-        library.checkout(secondBook.getId(), "user");
+        assertTrue(library.checkout(secondBook.getId(), "user"));
         assertFalse(library.getAvailableBooks().contains(firstBook));
         assertFalse(library.getAvailableBooks().contains(secondBook));
+
+        assertFalse(library.checkout(secondBook.getId(), "user"));
     }
 }
