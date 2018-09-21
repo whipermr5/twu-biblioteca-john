@@ -30,20 +30,10 @@ public class BookTest {
 
     @Test
     public void testEquality() {
-        String title1 = "TDD";
-        String title2 = "Refactoring";
-        String author1 = "Kent";
-        String author2 = "Martin";
-        int year1 = 2002;
-        int year2 = 1999;
+        Book book1 = new Book("Title", "Author", 2018);
+        Book book2 = new Book("Title", "Author", 2018);
 
-        assertEquals(new Book(title1, author1, year1), new Book(title1, author1, year1));
-
-        assertNotEquals(new Book(title1, author1, year1), new Book(title2, author1, year1));
-        assertNotEquals(new Book(title1, author1, year1), new Book(title1, author2, year1));
-        assertNotEquals(new Book(title1, author1, year1), new Book(title1, author1, year2));
-
-        assertNotEquals(new Book(title1, author1, year1), null);
-        assertNotEquals(new Book(title1, author1, year1), "string");
+        assertEquals(book1, book1);
+        assertNotEquals(book1, book2);
     }
 }

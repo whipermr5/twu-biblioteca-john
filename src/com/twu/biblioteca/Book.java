@@ -35,16 +35,4 @@ class Book {
     boolean isAvailable() {
         return owner == null;
     }
-
-    public boolean equals(Object other) {
-        if (other == null) {
-            return false;
-        }
-        if (other.getClass() != this.getClass()) {
-            return false;
-        }
-
-        Book otherBook = (Book) other;
-        return title.equals(otherBook.title) && author.equals(otherBook.author) && year == otherBook.year;
-    }
 }
