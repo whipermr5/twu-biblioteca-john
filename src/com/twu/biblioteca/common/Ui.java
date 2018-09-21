@@ -11,9 +11,11 @@ public class Ui {
     public static final String ID_QUIT = "q";
 
     public static final String WELCOME = "Welcome!";
-    public static final String MENU = "Please select an option:" + System.lineSeparator()
+    public static final String MENU = "------ MENU ------" + System.lineSeparator()
             + ID_LIST_BOOKS + " - List Books" + System.lineSeparator()
-            + ID_QUIT + " - Quit";
+            + ID_CHECKOUT + " - Checkout Book" + System.lineSeparator()
+            + ID_QUIT + " - Quit" + System.lineSeparator()
+            + "Please select an option.";
     public static final String INVALID_OPTION = "Select a valid option!";
     public static final String CHECKOUT_SUCCESS = "Thank you! Enjoy the book";
     public static final String CHECKOUT_FAILURE = "That book is not available.";
