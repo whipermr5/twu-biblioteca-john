@@ -2,8 +2,7 @@ package com.twu.biblioteca;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.*;
 
 public class BookTest {
 
@@ -16,6 +15,17 @@ public class BookTest {
         assertEquals(title, book.getTitle());
         assertEquals(author, book.getAuthor());
         assertEquals(year, book.getYear());
+        assertNull(book.getOwner());
+        assertTrue(book.isAvailable());
+    }
+
+    @Test
+    public void testOwnership() {
+        Book book = new Book("Title", "Author", 2018);
+        String user = "user";
+        book.setOwner(user);
+        assertEquals(user, book.getOwner());
+        assertFalse(book.isAvailable());
     }
 
     @Test

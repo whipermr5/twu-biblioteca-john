@@ -4,11 +4,16 @@ class Book {
     private String title;
     private String author;
     private int year;
+    private String owner;
 
     Book(String title, String author, int year) {
         this.title = title;
         this.author = author;
         this.year = year;
+    }
+
+    void setOwner(String owner) {
+        this.owner = owner;
     }
 
     String getTitle() {
@@ -21,6 +26,14 @@ class Book {
 
     int getYear() {
         return year;
+    }
+
+    String getOwner() {
+        return owner;
+    }
+
+    boolean isAvailable() {
+        return owner == null;
     }
 
     public boolean equals(Object other) {
