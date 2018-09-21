@@ -8,7 +8,7 @@ public class QuitCommandTest {
 
     @Test
     public void testExecute() {
-        Command command = Command.get("q");
+        Command command = CommandFactory.get("q");
         assertEquals(Ui.GOODBYE, command.execute(null));
     }
 }

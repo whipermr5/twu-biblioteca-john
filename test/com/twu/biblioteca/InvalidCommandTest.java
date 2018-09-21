@@ -8,7 +8,7 @@ public class InvalidCommandTest {
 
     @Test
     public void testExecute() {
-        Command command = Command.get("abc");
+        Command command = CommandFactory.get("abc");
         assertEquals(Ui.INVALID_OPTION, command.execute(null));
     }
 }
