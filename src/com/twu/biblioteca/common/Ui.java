@@ -1,33 +1,33 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.common;
 
 import java.io.InputStream;
 import java.util.List;
 import java.util.Scanner;
 
-class Ui {
+public class Ui {
 
-    static final String ID_LIST_BOOKS = "l";
-    static final String ID_QUIT = "q";
+    public static final String ID_LIST_BOOKS = "l";
+    public static final String ID_QUIT = "q";
 
+    public static final String WELCOME = "Welcome!";
+    public static final String MENU = "Please select an option:" + System.lineSeparator()
+            + ID_LIST_BOOKS + " - List Books" + System.lineSeparator()
+            + ID_QUIT + " - Quit";
+    public static final String INVALID_OPTION = "Select a valid option!";
+    public static final String GOODBYE = "Goodbye!";
+
+    static final String NO_BOOKS = "No books!";
     static final String BOOK_DETAILS_FORMAT_STRING = "%n%-2s | %-40s | %-20s | %4s";
     static final String BOOK_LIST_HEADER = "Books:"
             + String.format(Ui.BOOK_DETAILS_FORMAT_STRING, "ID", "Title", "Author", "Year") + System.lineSeparator()
             + "---------------------------------------------------------------------------";
 
-    static final String WELCOME = "Welcome!";
-    static final String MENU = "Please select an option:" + System.lineSeparator()
-            + ID_LIST_BOOKS + " - List Books" + System.lineSeparator()
-            + ID_QUIT + " - Quit";
-    static final String INVALID_OPTION = "Select a valid option!";
-    static final String NO_BOOKS = "No books!";
-    static final String GOODBYE = "Goodbye!";
-
-    static String getUserInput(InputStream in) {
+    public static String getUserInput(InputStream in) {
         Scanner scanner = new Scanner(in);
         return scanner.nextLine();
     }
 
-    static String formatBookList(List<Book> books) {
+    public static String formatBookList(List<Book> books) {
         if (books == null) {
             return null;
         }

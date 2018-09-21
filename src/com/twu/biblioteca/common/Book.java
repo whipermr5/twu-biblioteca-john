@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.common;
 
 class Book {
     private static int count;

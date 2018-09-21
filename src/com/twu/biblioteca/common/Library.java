@@ -1,14 +1,14 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.common;
 
 import java.util.Arrays;
 import java.util.List;
 
-class Library {
+public class Library {
 
     private List<Book> books = Arrays.asList(
             new Book("TDD", "Kent", 2002), new Book("Refactoring", "Martin", 1999));
 
-    List<Book> getBooks() {
+    public List<Book> getBooks() {
         return books;
     }
 }
