@@ -9,12 +9,8 @@ public class ListBooksCommandTest {
     @Test
     public void testExecute() {
         Command command = CommandFactory.get(Ui.ID_LIST_BOOKS);
-        String output = command.execute(new Library());
-        assertEquals("Books:\n" +
-                "Title                                    | Author               | Year\n" +
-                "----------------------------------------------------------------------\n" +
-                "TDD                                      | Kent                 | 2002\n" +
-                "Refactoring                              | Martin               | 1999",
-                output);
+        Library library = new Library();
+        String output = command.execute(library);
+        assertEquals(Ui.formatBookList(library.getBooks()), output);
     }
 }
