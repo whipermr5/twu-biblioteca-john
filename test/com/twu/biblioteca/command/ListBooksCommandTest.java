@@ -13,6 +13,6 @@ public class ListBooksCommandTest {
         Command command = CommandFactory.get(Ui.ID_LIST_BOOKS);
         Library library = new Library();
         String output = command.execute(library);
-        assertEquals(Ui.formatBookList(library.getBooks()), output);
+        assertEquals(Ui.formatBookList(library.getAvailableBooks()), output);
     }
 }

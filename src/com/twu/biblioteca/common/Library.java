@@ -8,7 +8,7 @@ public class Library {
     private List<Book> books = Arrays.asList(
             new Book("TDD", "Kent", 2002), new Book("Refactoring", "Martin", 1999));
 
-    public List<Book> getBooks() {
+    public List<Book> getAvailableBooks() {
         return books;
     }
 }
