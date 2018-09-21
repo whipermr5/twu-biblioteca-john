@@ -26,4 +26,14 @@ public class Library {
         }
         return false;
     }
+
+    public boolean returnBook(String bookId, String ownerId) {
+        for (Book book : getCustomerBooks(ownerId)) {
+            if (book.getId().equals(bookId)) {
+                book.setOwner(null);
+                return true;
+            }
+        }
+        return false;
+    }
 }

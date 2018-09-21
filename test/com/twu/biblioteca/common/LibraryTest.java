@@ -61,4 +61,22 @@ public class LibraryTest {
 
         assertFalse(library.checkout(secondBook.getId(), "user"));
     }
+
+    @Test
+    public void testReturnBook() {
+        library.checkout(firstBook.getId(), "user");
+        library.checkout(secondBook.getId(), "user");
+        assertEquals(Arrays.asList(firstBook, secondBook), library.getCustomerBooks("user"));
+        assertTrue(library.getAvailableBooks().isEmpty());
+
+        assertTrue(library.returnBook(firstBook.getId(), "user"));
+        assertEquals(Collections.singletonList(secondBook), library.getCustomerBooks("user"));
+        assertEquals(Collections.singletonList(firstBook), library.getAvailableBooks());
+
+        assertTrue(library.returnBook(secondBook.getId(), "user"));
+        assertTrue(library.getCustomerBooks("user").isEmpty());
+        assertEquals(Arrays.asList(firstBook, secondBook), library.getAvailableBooks());
+
+        assertFalse(library.returnBook(firstBook.getId(), "user"));
+    }
 }
