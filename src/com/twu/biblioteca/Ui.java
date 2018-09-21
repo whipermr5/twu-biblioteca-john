@@ -9,10 +9,10 @@ class Ui {
     static final String ID_LIST_BOOKS = "l";
     static final String ID_QUIT = "q";
 
-    static final String BOOK_DETAILS_FORMAT_STRING = "%n%-40s | %-20s | %4s";
+    static final String BOOK_DETAILS_FORMAT_STRING = "%n%-2s | %-40s | %-20s | %4s";
     static final String BOOK_LIST_HEADER = "Books:"
-            + String.format(Ui.BOOK_DETAILS_FORMAT_STRING, "Title", "Author", "Year") + System.lineSeparator()
-            + "----------------------------------------------------------------------";
+            + String.format(Ui.BOOK_DETAILS_FORMAT_STRING, "ID", "Title", "Author", "Year") + System.lineSeparator()
+            + "---------------------------------------------------------------------------";
 
     static final String WELCOME = "Welcome!";
     static final String MENU = "Please select an option:" + System.lineSeparator()
@@ -38,7 +38,8 @@ class Ui {
 
         StringBuilder sb = new StringBuilder(BOOK_LIST_HEADER);
         for (Book book : books) {
-            sb.append(String.format(BOOK_DETAILS_FORMAT_STRING, book.getTitle(), book.getAuthor(), book.getYear()));
+            sb.append(String.format(BOOK_DETAILS_FORMAT_STRING,
+                    book.getId(), book.getTitle(), book.getAuthor(), book.getYear()));
         }
         return sb.toString();
     }
