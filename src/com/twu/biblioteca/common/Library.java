@@ -13,6 +13,10 @@ public class Library {
         return books.stream().filter(Book::isAvailable).collect(Collectors.toList());
     }
 
+    public List<Book> getCustomerBooks(String ownerId) {
+        return books.stream().filter(book -> ownerId.equals(book.getOwner())).collect(Collectors.toList());
+    }
+
     public boolean checkout(String bookId, String ownerId) {
         for (Book book : getAvailableBooks()) {
             if (book.getId().equals(bookId)) {

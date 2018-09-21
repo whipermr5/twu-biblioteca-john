@@ -36,6 +36,20 @@ public class LibraryTest {
     }
 
     @Test
+    public void testGetCustomerBooks() {
+        assertTrue(library.getCustomerBooks("user").isEmpty());
+
+        firstBook.setOwner("user");
+        assertEquals(Collections.singletonList(firstBook), library.getCustomerBooks("user"));
+
+        secondBook.setOwner("user");
+        assertEquals(Arrays.asList(firstBook, secondBook), library.getCustomerBooks("user"));
+
+        firstBook.setOwner(null);
+        assertEquals(Collections.singletonList(secondBook), library.getCustomerBooks("user"));
+    }
+
+    @Test
     public void testCheckout() {
         List<Book> originalBooks = library.getAvailableBooks();
         assertEquals(Arrays.asList(firstBook, secondBook), originalBooks);

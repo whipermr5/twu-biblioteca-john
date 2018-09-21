@@ -34,9 +34,14 @@ public class BookTest {
     public void testOwnership() {
         Book book = new Book("Title", "Author", 2018);
         String user = "user";
+
         book.setOwner(user);
         assertEquals(user, book.getOwner());
         assertFalse(book.isAvailable());
+
+        book.setOwner(null);
+        assertNull(book.getOwner());
+        assertTrue(book.isAvailable());
     }
 
     @Test
