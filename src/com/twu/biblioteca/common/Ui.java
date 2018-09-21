@@ -13,7 +13,7 @@ public class Ui {
     public static final String ID_QUIT = "q";
 
     public static final String WELCOME = "Welcome!";
-    public static final String MENU = "------ MENU ------" + System.lineSeparator()
+    public static final String MENU = System.lineSeparator() + "------ MENU ------" + System.lineSeparator()
             + ID_LIST_BOOKS + " - List Books" + System.lineSeparator()
             + ID_CHECKOUT + " - Checkout Book" + System.lineSeparator()
             + ID_QUIT + " - Quit" + System.lineSeparator()

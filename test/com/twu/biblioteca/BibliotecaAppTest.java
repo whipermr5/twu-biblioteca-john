@@ -4,7 +4,6 @@ package com.twu.biblioteca;
 import com.twu.biblioteca.command.ListBooksCommand;
 import com.twu.biblioteca.command.QuitCommand;
 import com.twu.biblioteca.common.Ui;
-import org.hamcrest.core.StringStartsWith;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +14,6 @@ import java.io.InputStream;
 import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
 public class BibliotecaAppTest {
 
@@ -38,13 +36,16 @@ public class BibliotecaAppTest {
     @Test
     public void testWelcome() {
         BibliotecaApp.main(new String[] {});
-        assertOutputStartsWith(Ui.WELCOME);
+        String expected = Ui.WELCOME + System.lineSeparator()
+                + Ui.MENU + System.lineSeparator()
+                + Ui.GOODBYE + System.lineSeparator();
+        assertEquals(expected, getOutput());
     }
 
     @Test
     public void testGetUserChoice() {
         BibliotecaApp.getUserChoice();
-        String expected = System.lineSeparator() + Ui.MENU + System.lineSeparator();
+        String expected = Ui.MENU + System.lineSeparator();
         assertEquals(expected, getOutput());
 
         System.setIn(getInputStream(Ui.ID_LIST_BOOKS));
@@ -60,9 +61,5 @@ public class BibliotecaAppTest {
 
     private static InputStream getInputStream(String input) {
         return new ByteArrayInputStream(input.getBytes());
-    }
-
-    private void assertOutputStartsWith(String expected) {
-        assertThat(getOutput(), StringStartsWith.startsWith(expected));
     }
 }
