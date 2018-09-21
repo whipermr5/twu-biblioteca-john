@@ -7,6 +7,17 @@ import static org.junit.Assert.*;
 public class BookTest {
 
     @Test
+    public void testId() {
+        Book book1 = new Book(null, null, 0);
+        int book1Id = book1.getId();
+
+        Book book2 = new Book(null, null, 0);
+        assertEquals(book1Id + 1, book2.getId());
+
+        assertEquals( book1Id, book1.getId());
+    }
+
+    @Test
     public void testConstructor() {
         String title = "Test-driven Development: By Example";
         String author = "Kent Beck";
