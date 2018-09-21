@@ -1,6 +1,8 @@
 package com.twu.biblioteca.common;
 
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.List;
 import java.util.Scanner;
 
@@ -27,7 +29,8 @@ public class Ui {
             + String.format(Ui.BOOK_DETAILS_FORMAT_STRING, "ID", "Title", "Author", "Year") + System.lineSeparator()
             + "---------------------------------------------------------------------------";
 
-    public static String getUserInput(InputStream in) {
+    public static String getUserInput(InputStream in, OutputStream out, String messageToUser) {
+        new PrintStream(out).print(messageToUser);
         Scanner scanner = new Scanner(in);
         return scanner.nextLine();
     }

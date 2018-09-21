@@ -16,7 +16,7 @@ public class BibliotecaApp {
         Command command;
         do {
             command = getUserChoice();
-            String output = command.execute(library, System.in);
+            String output = command.execute(library, System.in, System.out);
             System.out.println(output);
 
         } while (!QuitCommand.class.equals(command.getClass()));
@@ -24,9 +24,7 @@ public class BibliotecaApp {
 
     static Command getUserChoice() {
         System.out.println();
-        System.out.println(Ui.MENU);
-        String userInput = Ui.getUserInput(System.in);
-        System.out.println();
+        String userInput = Ui.getUserInput(System.in, System.out, Ui.MENU);
 
         return CommandFactory.get(userInput);
     }

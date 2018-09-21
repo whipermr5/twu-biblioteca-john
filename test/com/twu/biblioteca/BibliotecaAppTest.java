@@ -44,7 +44,8 @@ public class BibliotecaAppTest {
     @Test
     public void testGetUserChoice() {
         BibliotecaApp.getUserChoice();
-        assertOutputStartsWith(System.lineSeparator() + Ui.MENU);
+        String expected = System.lineSeparator() + Ui.MENU;
+        assertEquals(expected, getOutput());
 
         System.setIn(getInputStream(Ui.ID_LIST_BOOKS));
         assertEquals(ListBooksCommand.class, BibliotecaApp.getUserChoice().getClass());

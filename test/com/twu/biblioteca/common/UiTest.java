@@ -3,6 +3,7 @@ package com.twu.biblioteca.common;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -15,8 +16,12 @@ public class UiTest {
     public void testGetUserInput() {
         String expectedInput = "Abc def G";
         ByteArrayInputStream inStream = new ByteArrayInputStream(expectedInput.getBytes());
-        String actualInput = Ui.getUserInput(inStream);
+        ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+
+        String messageToUser = "Message to user";
+        String actualInput = Ui.getUserInput(inStream, outStream, messageToUser);
         assertEquals(expectedInput, actualInput);
+        assertEquals(messageToUser, outStream.toString());
     }
 
     @Test
