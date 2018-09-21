@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -25,6 +26,14 @@ public class UiTest {
     private static final String BOOK2_TITLE = "Refactoring";
     private static final String BOOK2_AUTHOR = "Martin";
     private static final int BOOK2_YEAR = 1999;
+
+    @Test
+    public void testGetUserInput() {
+        String expectedInput = "Abc def G";
+        ByteArrayInputStream inStream = new ByteArrayInputStream(expectedInput.getBytes());
+        String actualInput = Ui.getUserInput(inStream);
+        assertEquals(expectedInput, actualInput);
+    }
 
     @Test
     public void testFormatBookList() {

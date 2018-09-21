@@ -1,6 +1,8 @@
 package com.twu.biblioteca;
 
+import java.io.InputStream;
 import java.util.List;
+import java.util.Scanner;
 
 class Ui {
 
@@ -8,6 +10,11 @@ class Ui {
 
     static final String WELCOME = "Welcome!";
     static final String MENU = "Please select an option:" + System.lineSeparator() + "1. List Books";
+
+    static String getUserInput(InputStream in) {
+        Scanner scanner = new Scanner(in);
+        return scanner.nextLine();
+    }
 
     static String formatBookList(List<Book> books) {
         if (books == null) {
