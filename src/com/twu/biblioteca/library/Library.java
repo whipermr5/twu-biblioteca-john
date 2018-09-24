@@ -14,7 +14,8 @@ public class Library {
     public Library() {
         items = Arrays.asList(
                 new Book("TDD", "Kent", 2002),
-                new Book("Refactoring", "Martin", 1999)
+                new Book("Refactoring", "Martin", 1999),
+                new Movie("The Day After Tomorrow", 2004, "Roland Emmerich", Rating.SIX)
         );
     }
 
@@ -23,7 +24,13 @@ public class Library {
     }
 
     public List<Book> getAvailableBooks() {
-        return getAvailableItems().stream().map(Book.class::cast).collect(Collectors.toList());
+        return getAvailableItems().stream().filter(item -> item instanceof Book).map(Book.class::cast)
+                .collect(Collectors.toList());
+    }
+
+    public List<Movie> getAvailableMovies() {
+        return getAvailableItems().stream().filter(item -> item instanceof Movie).map(Movie.class::cast)
+                .collect(Collectors.toList());
     }
 
     public List<Item> getItemsBorrowedBy(String borrowerId) {
