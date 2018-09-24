@@ -13,8 +13,8 @@ public class Library {
 
     public Library() {
         items = Arrays.asList(
-                new Book("TDD", "Kent", 2002),
-                new Book("Refactoring", "Martin", 1999),
+                new Book("Test-driven Development: By Example", "Kent Beck", 2002),
+                new Book("Refactoring", "Martin Fowler", 1999),
                 new Movie("The Day After Tomorrow", 2004, "Roland Emmerich", Rating.SIX)
         );
     }
