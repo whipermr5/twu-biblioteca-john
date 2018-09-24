@@ -16,6 +16,6 @@ public class ListBooksCommandTest {
         Library library = new Library();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         command.execute(library, null, out);
-        assertEquals(Ui.formatBookList(library.getAvailableBooks()) + System.lineSeparator(), out.toString());
+        assertEquals(Ui.formatBooksAvailable(library.getAvailableBooks()) + System.lineSeparator(), out.toString());
     }
 }

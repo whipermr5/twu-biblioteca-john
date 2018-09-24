@@ -30,7 +30,7 @@ public class Ui {
     public static final String SELECT_BOOK_RETURN = "Enter ID of book to return: ";
     public static final String NO_BOOKS_AVAILABLE = "No books available!";
     public static final String NO_BOOKS_CHECKED_OUT = "You have not checked out any books.";
-    public static final String NO_MOVIES = "No movies!";
+    public static final String NO_MOVIES_AVAILABLE = "No movies available!";
     public static final String CHECKOUT_SUCCESS = "Thank you! Enjoy the book";
     public static final String CHECKOUT_FAILURE = "That book is not available.";
     public static final String RETURN_SUCCESS = "Thank you for returning the book.";
@@ -57,7 +57,7 @@ public class Ui {
         return userInput;
     }
 
-    public static String formatBookList(List<Book> books) {
+    public static String formatBooksAvailable(List<Book> books) {
         if (books == null) {
             return null;
         }
@@ -74,13 +74,13 @@ public class Ui {
         return sb.toString();
     }
 
-    public static String formatMovieList(List<Movie> movies) {
+    public static String formatMoviesAvailable(List<Movie> movies) {
         if (movies == null) {
             return null;
         }
 
         if (movies.isEmpty()) {
-            return NO_MOVIES;
+            return NO_MOVIES_AVAILABLE;
         }
 
         StringBuilder sb = new StringBuilder(MOVIE_LIST_HEADER);

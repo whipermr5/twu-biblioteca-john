@@ -16,6 +16,6 @@ public class ListMoviesCommandTest {
         Library library = new Library();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         command.execute(library, null, out);
-        assertEquals(Ui.formatMovieList(library.getAvailableMovies()) + System.lineSeparator(), out.toString());
+        assertEquals(Ui.formatMoviesAvailable(library.getAvailableMovies()) + System.lineSeparator(), out.toString());
     }
 }

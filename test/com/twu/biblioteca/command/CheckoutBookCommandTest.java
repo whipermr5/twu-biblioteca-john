@@ -23,7 +23,7 @@ public class CheckoutBookCommandTest {
         OutputStream out = new ByteArrayOutputStream();
 
         Command command = CommandFactory.get(Ui.ID_CHECKOUT);
-        String expected = Ui.formatBookList(library.getAvailableBooks()) + System.lineSeparator()
+        String expected = Ui.formatBooksAvailable(library.getAvailableBooks()) + System.lineSeparator()
                 + Ui.SELECT_BOOK_CHECKOUT + System.lineSeparator()
                 + Ui.CHECKOUT_SUCCESS + System.lineSeparator();
         command.execute(library, in, out);
@@ -32,7 +32,7 @@ public class CheckoutBookCommandTest {
 
         in = new ByteArrayInputStream(book.getId().getBytes());
         out = new ByteArrayOutputStream();
-        expected = Ui.formatBookList(library.getAvailableBooks()) + System.lineSeparator()
+        expected = Ui.formatBooksAvailable(library.getAvailableBooks()) + System.lineSeparator()
                 + Ui.SELECT_BOOK_CHECKOUT + System.lineSeparator()
                 + Ui.CHECKOUT_FAILURE + System.lineSeparator();
         command.execute(library, in, out);
@@ -41,7 +41,7 @@ public class CheckoutBookCommandTest {
         Book remainingBook = library.getAvailableBooks().iterator().next();
         in = new ByteArrayInputStream(remainingBook.getId().getBytes());
         out = new ByteArrayOutputStream();
-        expected = Ui.formatBookList(library.getAvailableBooks()) + System.lineSeparator()
+        expected = Ui.formatBooksAvailable(library.getAvailableBooks()) + System.lineSeparator()
                 + Ui.SELECT_BOOK_CHECKOUT + System.lineSeparator()
                 + Ui.CHECKOUT_SUCCESS + System.lineSeparator();
         command.execute(library, in, out);

@@ -28,31 +28,31 @@ public class UiTest {
     }
 
     @Test
-    public void testFormatBookList() {
-        assertNull(Ui.formatBookList(null));
+    public void testFormatBooksAvailable() {
+        assertNull(Ui.formatBooksAvailable(null));
 
-        assertEquals(Ui.NO_BOOKS_AVAILABLE, Ui.formatBookList(Collections.emptyList()));
+        assertEquals(Ui.NO_BOOKS_AVAILABLE, Ui.formatBooksAvailable(Collections.emptyList()));
 
         Book book1 = new Book("TDD", "Kent", 2002);
         Book book2 = new Book("Refactoring", "Martin", 1999);
 
         assertEquals(Ui.BOOK_LIST_HEADER + expectedFormat(book1),
-                Ui.formatBookList(Collections.singletonList(book1)));
+                Ui.formatBooksAvailable(Collections.singletonList(book1)));
 
         assertEquals(Ui.BOOK_LIST_HEADER + expectedFormat(book1) + expectedFormat(book2),
-                Ui.formatBookList(Arrays.asList(book1, book2)));
+                Ui.formatBooksAvailable(Arrays.asList(book1, book2)));
     }
 
     @Test
-    public void testFormatMovieList() {
-        assertNull(Ui.formatMovieList(null));
+    public void testFormatMoviesAvailable() {
+        assertNull(Ui.formatMoviesAvailable(null));
 
-        assertEquals(Ui.NO_MOVIES, Ui.formatMovieList(Collections.emptyList()));
+        assertEquals(Ui.NO_MOVIES_AVAILABLE, Ui.formatMoviesAvailable(Collections.emptyList()));
 
         Movie movie = new Movie("TDAD", 2004, "Roland", Rating.UNRATED);
 
         assertEquals(Ui.MOVIE_LIST_HEADER + expectedFormat(movie),
-                Ui.formatMovieList(Collections.singletonList(movie)));
+                Ui.formatMoviesAvailable(Collections.singletonList(movie)));
     }
 
     private static String expectedFormat(Book book) {

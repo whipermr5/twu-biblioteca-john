@@ -9,6 +9,6 @@ import java.io.PrintStream;
 public class ListMoviesCommand extends Command {
 
     public void execute(Library library, InputStream in, PrintStream out) {
-        out.println(Ui.formatMovieList(library.getAvailableMovies()));
+        out.println(Ui.formatMoviesAvailable(library.getAvailableMovies()));
     }
 }

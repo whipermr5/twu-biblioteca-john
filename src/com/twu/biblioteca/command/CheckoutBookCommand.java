@@ -13,7 +13,7 @@ public class CheckoutBookCommand extends Command {
             out.println(Ui.NO_BOOKS_AVAILABLE);
             return;
         }
-        out.println(Ui.formatBookList(library.getAvailableBooks()));
+        out.println(Ui.formatBooksAvailable(library.getAvailableBooks()));
         String bookId = Ui.getUserInput(in, out, Ui.SELECT_BOOK_CHECKOUT);
         boolean wasSuccessful = library.checkoutItem(bookId, "user");
         out.println(wasSuccessful ? Ui.CHECKOUT_SUCCESS : Ui.CHECKOUT_FAILURE);
