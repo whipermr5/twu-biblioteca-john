@@ -38,13 +38,6 @@ public class LibraryTest {
     }
 
     @Test
-    public void testGetAvailableBooks() {
-        assertEquals(Arrays.asList(firstItem, secondItem), library.getAvailableBooks());
-        assertTrue(library.getAvailableItems().contains(firstItem));
-        assertTrue(library.getAvailableItems().contains(secondItem));
-    }
-
-    @Test
     public void testGetAvailableMovies() {
         assertEquals(Collections.singletonList(thirdItem), library.getAvailableMovies());
         assertTrue(library.getAvailableItems().contains(thirdItem));
@@ -62,15 +55,6 @@ public class LibraryTest {
 
         library.returnItem(firstItem.getId(), "user");
         assertEquals(Collections.singletonList(secondItem), library.getItemsBorrowedBy("user"));
-    }
-
-    @Test
-    public void testGetBooksBorrowedBy() {
-        library.checkoutItem(thirdItem.getId(), "user");
-        assertTrue(library.getBooksBorrowedBy("user").isEmpty());
-
-        library.checkoutItem(firstItem.getId(), "user");
-        assertEquals(Collections.singletonList(firstItem), library.getBooksBorrowedBy("user"));
     }
 
     @Test

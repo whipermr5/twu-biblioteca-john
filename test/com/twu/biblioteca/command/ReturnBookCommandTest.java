@@ -19,8 +19,8 @@ public class ReturnBookCommandTest {
     @Test
     public void testExecute() {
         Library library = new Library();
-        Book firstBook = library.getAvailableBooks().get(0);
-        Book secondBook = library.getAvailableBooks().get(1);
+        Book firstBook = BookCommand.getAvailableBooks(library).get(0);
+        Book secondBook = BookCommand.getAvailableBooks(library).get(1);
 
         OutputStream out = new ByteArrayOutputStream();
 
@@ -29,13 +29,13 @@ public class ReturnBookCommandTest {
         assertEquals(Ui.NO_BOOKS_CHECKED_OUT + System.lineSeparator(), out.toString());
 
         library.checkoutItem(firstBook.getId(), "user");
-        assertEquals(Collections.singletonList(firstBook), library.getBooksBorrowedBy("user"));
+        assertEquals(Collections.singletonList(firstBook), BookCommand.getBooksBorrowedBy(library, "user"));
 
         InputStream in = new ByteArrayInputStream(secondBook.getId().getBytes());
         out = new ByteArrayOutputStream();
 
         String expected = Ui.formatBooksCheckedOut(
-                library.getBooksBorrowedBy("user")) + System.lineSeparator()
+                BookCommand.getBooksBorrowedBy(library, "user")) + System.lineSeparator()
                 + Ui.SELECT_BOOK_RETURN + System.lineSeparator()
                 + Ui.RETURN_BOOK_FAILURE + System.lineSeparator();
         command.execute(library, in, out);
@@ -45,11 +45,11 @@ public class ReturnBookCommandTest {
         out = new ByteArrayOutputStream();
 
         expected = Ui.formatBooksCheckedOut(
-                library.getBooksBorrowedBy("user")) + System.lineSeparator()
+                BookCommand.getBooksBorrowedBy(library, "user")) + System.lineSeparator()
                 + Ui.SELECT_BOOK_RETURN + System.lineSeparator()
                 + Ui.RETURN_BOOK_SUCCESS + System.lineSeparator();
         command.execute(library, in, out);
         assertEquals(expected, out.toString());
-        assertFalse(library.getBooksBorrowedBy("user").contains(firstBook));
+        assertFalse(BookCommand.getBooksBorrowedBy(library, "user").contains(firstBook));
     }
 }

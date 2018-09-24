@@ -6,14 +6,14 @@ import com.twu.biblioteca.common.Ui;
 import java.io.InputStream;
 import java.io.PrintStream;
 
-public class ReturnBookCommand extends Command {
+public class ReturnBookCommand extends BookCommand {
 
     public void execute(Library library, InputStream in, PrintStream out) {
-        if (library.getBooksBorrowedBy("user").isEmpty()) {
+        if (getBooksBorrowedBy(library, "user").isEmpty()) {
             out.println(Ui.NO_BOOKS_CHECKED_OUT);
             return;
         }
-        out.println(Ui.formatBooksCheckedOut(library.getBooksBorrowedBy("user")));
+        out.println(Ui.formatBooksCheckedOut(getBooksBorrowedBy(library, "user")));
         String bookId = Ui.getUserInput(in, out, Ui.SELECT_BOOK_RETURN);
         boolean wasSuccessful = library.returnItem(bookId, "user");
         out.println(wasSuccessful ? Ui.RETURN_BOOK_SUCCESS : Ui.RETURN_BOOK_FAILURE);

@@ -1,7 +1,7 @@
 package com.twu.biblioteca.command;
 
-import com.twu.biblioteca.library.Library;
 import com.twu.biblioteca.common.Ui;
+import com.twu.biblioteca.library.Library;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -16,6 +16,8 @@ public class ListBooksCommandTest {
         Library library = new Library();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         command.execute(library, null, out);
-        assertEquals(Ui.formatBooksAvailable(library.getAvailableBooks()) + System.lineSeparator(), out.toString());
+
+        assertEquals(Ui.formatBooksAvailable(
+                BookCommand.getAvailableBooks(library)) + System.lineSeparator(), out.toString());
     }
 }

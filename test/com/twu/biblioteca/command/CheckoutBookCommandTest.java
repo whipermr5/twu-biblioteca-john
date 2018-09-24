@@ -18,30 +18,30 @@ public class CheckoutBookCommandTest {
     @Test
     public void testExecute() {
         Library library = new Library();
-        Book book = library.getAvailableBooks().iterator().next();
+        Book book = BookCommand.getAvailableBooks(library).iterator().next();
         InputStream in = new ByteArrayInputStream(book.getId().getBytes());
         OutputStream out = new ByteArrayOutputStream();
 
         Command command = CommandFactory.get(Ui.ID_CHECKOUT);
-        String expected = Ui.formatBooksAvailable(library.getAvailableBooks()) + System.lineSeparator()
+        String expected = Ui.formatBooksAvailable(BookCommand.getAvailableBooks(library)) + System.lineSeparator()
                 + Ui.SELECT_BOOK_CHECKOUT + System.lineSeparator()
                 + Ui.CHECKOUT_BOOK_SUCCESS + System.lineSeparator();
         command.execute(library, in, out);
         assertEquals(expected, out.toString());
-        assertFalse(library.getAvailableBooks().contains(book));
+        assertFalse(BookCommand.getAvailableBooks(library).contains(book));
 
         in = new ByteArrayInputStream(book.getId().getBytes());
         out = new ByteArrayOutputStream();
-        expected = Ui.formatBooksAvailable(library.getAvailableBooks()) + System.lineSeparator()
+        expected = Ui.formatBooksAvailable(BookCommand.getAvailableBooks(library)) + System.lineSeparator()
                 + Ui.SELECT_BOOK_CHECKOUT + System.lineSeparator()
                 + Ui.CHECKOUT_BOOK_FAILURE + System.lineSeparator();
         command.execute(library, in, out);
         assertEquals(expected, out.toString());
 
-        Book remainingBook = library.getAvailableBooks().iterator().next();
+        Book remainingBook = BookCommand.getAvailableBooks(library).iterator().next();
         in = new ByteArrayInputStream(remainingBook.getId().getBytes());
         out = new ByteArrayOutputStream();
-        expected = Ui.formatBooksAvailable(library.getAvailableBooks()) + System.lineSeparator()
+        expected = Ui.formatBooksAvailable(BookCommand.getAvailableBooks(library)) + System.lineSeparator()
                 + Ui.SELECT_BOOK_CHECKOUT + System.lineSeparator()
                 + Ui.CHECKOUT_BOOK_SUCCESS + System.lineSeparator();
         command.execute(library, in, out);
