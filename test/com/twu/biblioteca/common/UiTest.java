@@ -1,6 +1,5 @@
 package com.twu.biblioteca.common;
 
-import com.twu.biblioteca.common.Ui;
 import com.twu.biblioteca.library.Book;
 import com.twu.biblioteca.library.Movie;
 import com.twu.biblioteca.library.Rating;
@@ -62,8 +61,18 @@ public class UiTest {
 
         Movie movie = new Movie("TDAD", 2004, "Roland", Rating.UNRATED);
 
-        assertEquals(Ui.MOVIE_LIST_HEADER + expectedFormat(movie),
+        assertEquals(Ui.MOVIES_AVAILABLE + Ui.MOVIE_LIST_HEADER + expectedFormat(movie),
                 Ui.formatMoviesAvailable(Collections.singletonList(movie)));
+    }
+
+    @Test
+    public void testFormatMoviesCheckedOut() {
+        assertEquals(Ui.NO_MOVIES_CHECKED_OUT, Ui.formatMoviesCheckedOut(Collections.emptyList()));
+
+        Movie movie = new Movie("TDAD", 2004, "Roland", Rating.UNRATED);
+
+        assertEquals(Ui.MOVIES_CHECKED_OUT + Ui.MOVIE_LIST_HEADER + expectedFormat(movie),
+                Ui.formatMoviesCheckedOut(Collections.singletonList(movie)));
     }
 
     private static String expectedFormat(Book book) {

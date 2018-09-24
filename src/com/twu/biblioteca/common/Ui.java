@@ -31,6 +31,7 @@ public class Ui {
     public static final String NO_BOOKS_AVAILABLE = "No books available!";
     public static final String NO_BOOKS_CHECKED_OUT = "You have not checked out any books.";
     public static final String NO_MOVIES_AVAILABLE = "No movies available!";
+    public static final String NO_MOVIES_CHECKED_OUT = "You have not checked out any movies.";
     public static final String CHECKOUT_SUCCESS = "Thank you! Enjoy the book";
     public static final String CHECKOUT_FAILURE = "That book is not available.";
     public static final String RETURN_SUCCESS = "Thank you for returning the book.";
@@ -45,10 +46,14 @@ public class Ui {
     static final String BOOK_LIST_HEADER =
             String.format(Ui.BOOK_DETAILS_FORMAT_STRING, "ID", "Title", "Author", "Year") + System.lineSeparator()
             + "---------------------------------------------------------------------------";
+
+    static final String MOVIES_AVAILABLE =
+            "---------------------- Movies Available for Checkout ----------------------";
+    static final String MOVIES_CHECKED_OUT =
+            "------------------------ Movies You've Checked Out ------------------------";
     static final String MOVIE_DETAILS_FORMAT_STRING = "%n%-2s | %-40s | %-4s | %-20s | %5s";
     static final String MOVIE_LIST_HEADER =
-            "----------------------------------- Available Movies ------------------------------------"
-            + String.format(Ui.MOVIE_DETAILS_FORMAT_STRING, "ID", "Name", "Year", "Director", "Rating")
+            String.format(Ui.MOVIE_DETAILS_FORMAT_STRING, "ID", "Name", "Year", "Director", "Rating")
             + System.lineSeparator()
             + "-----------------------------------------------------------------------------------------";
 
@@ -90,20 +95,29 @@ public class Ui {
         return formatBooks(books, BOOKS_CHECKED_OUT, NO_BOOKS_CHECKED_OUT);
     }
 
-    public static String formatMoviesAvailable(List<Movie> movies) {
+    private static String formatMovies(List<Movie> movies, String title, String emptyMessage) {
         if (movies == null) {
             return null;
         }
 
         if (movies.isEmpty()) {
-            return NO_MOVIES_AVAILABLE;
+            return emptyMessage;
         }
 
-        StringBuilder sb = new StringBuilder(MOVIE_LIST_HEADER);
+        StringBuilder sb = new StringBuilder(title);
+        sb.append(MOVIE_LIST_HEADER);
         for (Movie movie : movies) {
             sb.append(String.format(MOVIE_DETAILS_FORMAT_STRING,
-                    movie.getId(), movie.getName(), movie.getYear(), movie.getDirector(), movie.getRating()));
+                    movie.getId(), movie.getName(),movie.getYear(), movie.getDirector(), movie.getRating()));
         }
         return sb.toString();
+    }
+
+    public static String formatMoviesAvailable(List<Movie> movies) {
+        return formatMovies(movies, MOVIES_AVAILABLE, NO_MOVIES_AVAILABLE);
+    }
+
+    public static String formatMoviesCheckedOut(List<Movie> movies) {
+        return formatMovies(movies, MOVIES_CHECKED_OUT, NO_MOVIES_CHECKED_OUT);
     }
 }
