@@ -20,21 +20,18 @@ public class ReturnBookCommandTest {
     @Test
     public void testExecute() {
         Library library = new Library();
+        Command command = CommandFactory.get(Ui.ID_RETURN);
+
         Book firstBook = BookCommand.getAvailableBooks(library).get(0);
         Book secondBook = BookCommand.getAvailableBooks(library).get(1);
-
         OutputStream out = new ByteArrayOutputStream();
-
-        Command command = CommandFactory.get(Ui.ID_RETURN);
         command.execute(library, null, out);
         assertEquals(Ui.NO_BOOKS_CHECKED_OUT + System.lineSeparator(), out.toString());
 
         library.checkoutItem(firstBook.getId(), "user");
         assertEquals(Collections.singletonList(firstBook), BookCommand.getBooksBorrowedBy(library, "user"));
-
         InputStream in = new ByteArrayInputStream(secondBook.getId().getBytes());
         out = new ByteArrayOutputStream();
-
         String expected = Ui.formatBooksCheckedOut(
                 BookCommand.getBooksBorrowedBy(library, "user")) + System.lineSeparator()
                 + Ui.SELECT_BOOK_RETURN + System.lineSeparator()
@@ -44,10 +41,8 @@ public class ReturnBookCommandTest {
 
         Movie movie = MovieCommand.getAvailableMovies(library).iterator().next();
         library.checkoutItem(movie.getId(), "user");
-
         in = new ByteArrayInputStream(movie.getId().getBytes());
         out = new ByteArrayOutputStream();
-
         expected = Ui.formatBooksCheckedOut(
                 BookCommand.getBooksBorrowedBy(library, "user")) + System.lineSeparator()
                 + Ui.SELECT_BOOK_RETURN + System.lineSeparator()
@@ -57,7 +52,6 @@ public class ReturnBookCommandTest {
 
         in = new ByteArrayInputStream(firstBook.getId().getBytes());
         out = new ByteArrayOutputStream();
-
         expected = Ui.formatBooksCheckedOut(
                 BookCommand.getBooksBorrowedBy(library, "user")) + System.lineSeparator()
                 + Ui.SELECT_BOOK_RETURN + System.lineSeparator()

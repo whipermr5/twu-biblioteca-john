@@ -19,11 +19,11 @@ public class CheckoutBookCommandTest {
     @Test
     public void testExecute() {
         Library library = new Library();
+        Command command = CommandFactory.get(Ui.ID_CHECKOUT);
+
         Book book = BookCommand.getAvailableBooks(library).iterator().next();
         InputStream in = new ByteArrayInputStream(book.getId().getBytes());
         OutputStream out = new ByteArrayOutputStream();
-
-        Command command = CommandFactory.get(Ui.ID_CHECKOUT);
         String expected = Ui.formatBooksAvailable(BookCommand.getAvailableBooks(library)) + System.lineSeparator()
                 + Ui.SELECT_BOOK_CHECKOUT + System.lineSeparator()
                 + Ui.CHECKOUT_BOOK_SUCCESS + System.lineSeparator();
