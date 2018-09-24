@@ -23,18 +23,8 @@ public class Library {
         return items.stream().filter(this::isAvailable).collect(Collectors.toList());
     }
 
-    public List<Movie> getAvailableMovies() {
-        return getAvailableItems().stream().filter(item -> item instanceof Movie).map(Movie.class::cast)
-                .collect(Collectors.toList());
-    }
-
     public List<Item> getItemsBorrowedBy(String borrowerId) {
         return items.stream().filter(item -> borrowerId.equals(getBorrower(item))).collect(Collectors.toList());
-    }
-
-    public List<Movie> getMoviesBorrowedBy(String borrowerId) {
-        return getItemsBorrowedBy(borrowerId).stream().filter(item -> item instanceof Movie).map(Movie.class::cast)
-                .collect(Collectors.toList());
     }
 
     public boolean checkoutItem(String itemId, String borrowerId) {

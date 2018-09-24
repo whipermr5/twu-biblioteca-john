@@ -6,9 +6,9 @@ import com.twu.biblioteca.library.Library;
 import java.io.InputStream;
 import java.io.PrintStream;
 
-public class ListMoviesCommand extends Command {
+public class ListMoviesCommand extends MovieCommand {
 
     public void execute(Library library, InputStream in, PrintStream out) {
-        out.println(Ui.formatMoviesAvailable(library.getAvailableMovies()));
+        out.println(Ui.formatMoviesAvailable(getAvailableMovies(library)));
     }
 }
