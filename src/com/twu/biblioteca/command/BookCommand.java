@@ -1,6 +1,7 @@
 package com.twu.biblioteca.command;
 
 import com.twu.biblioteca.library.Book;
+import com.twu.biblioteca.library.Item;
 import com.twu.biblioteca.library.Library;
 
 import java.util.List;
@@ -17,5 +18,9 @@ abstract class BookCommand extends Command {
         return library.getItemsBorrowedBy(borrowerId).stream()
                 .filter(item -> item instanceof Book).map(Book.class::cast)
                 .collect(Collectors.toList());
+    }
+
+    static boolean isBook(Item item) {
+        return item instanceof Book;
     }
 }
