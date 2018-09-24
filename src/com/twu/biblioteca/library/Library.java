@@ -16,22 +16,22 @@ public class Library {
         return books.stream().filter(this::isAvailable).collect(Collectors.toList());
     }
 
-    public List<Book> getCustomerBooks(String ownerId) {
-        return books.stream().filter(book -> ownerId.equals(getBorrower(book))).collect(Collectors.toList());
+    public List<Book> getBooksBorrowedBy(String borrowerId) {
+        return books.stream().filter(book -> borrowerId.equals(getBorrower(book))).collect(Collectors.toList());
     }
 
-    public boolean checkout(String bookId, String ownerId) {
+    public boolean checkout(String bookId, String borrowerId) {
         for (Book book : getAvailableBooks()) {
             if (book.getId().equals(bookId)) {
-                itemBorrowerMap.put(book.getId(), ownerId);
+                itemBorrowerMap.put(book.getId(), borrowerId);
                 return true;
             }
         }
         return false;
     }
 
-    public boolean returnBook(String bookId, String ownerId) {
-        for (Book book : getCustomerBooks(ownerId)) {
+    public boolean returnBook(String bookId, String borrowerId) {
+        for (Book book : getBooksBorrowedBy(borrowerId)) {
             if (book.getId().equals(bookId)) {
                 itemBorrowerMap.remove(book.getId());
                 return true;

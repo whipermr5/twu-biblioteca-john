@@ -29,12 +29,12 @@ public class ReturnCommandTest {
         assertEquals(Ui.NO_BOOKS + System.lineSeparator(), out.toString());
 
         library.checkout(firstBook.getId(), "user");
-        assertEquals(Collections.singletonList(firstBook), library.getCustomerBooks("user"));
+        assertEquals(Collections.singletonList(firstBook), library.getBooksBorrowedBy("user"));
 
         InputStream in = new ByteArrayInputStream(secondBook.getId().getBytes());
         out = new ByteArrayOutputStream();
 
-        String expected = Ui.formatBookList(library.getCustomerBooks("user")) + System.lineSeparator()
+        String expected = Ui.formatBookList(library.getBooksBorrowedBy("user")) + System.lineSeparator()
                 + Ui.SELECT_BOOK + System.lineSeparator()
                 + Ui.RETURN_FAILURE + System.lineSeparator();
         command.execute(library, in, out);
@@ -43,11 +43,11 @@ public class ReturnCommandTest {
         in = new ByteArrayInputStream(firstBook.getId().getBytes());
         out = new ByteArrayOutputStream();
 
-        expected = Ui.formatBookList(library.getCustomerBooks("user")) + System.lineSeparator()
+        expected = Ui.formatBookList(library.getBooksBorrowedBy("user")) + System.lineSeparator()
                 + Ui.SELECT_BOOK + System.lineSeparator()
                 + Ui.RETURN_SUCCESS + System.lineSeparator();
         command.execute(library, in, out);
         assertEquals(expected, out.toString());
-        assertFalse(library.getCustomerBooks("user").contains(firstBook));
+        assertFalse(library.getBooksBorrowedBy("user").contains(firstBook));
     }
 }
