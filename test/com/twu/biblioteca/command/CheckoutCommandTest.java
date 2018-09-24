@@ -1,7 +1,7 @@
 package com.twu.biblioteca.command;
 
-import com.twu.biblioteca.common.Book;
-import com.twu.biblioteca.common.Library;
+import com.twu.biblioteca.library.Book;
+import com.twu.biblioteca.library.Library;
 import com.twu.biblioteca.Ui;
 import org.junit.Test;
 

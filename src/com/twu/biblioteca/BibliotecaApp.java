@@ -3,7 +3,7 @@ package com.twu.biblioteca;
 import com.twu.biblioteca.command.Command;
 import com.twu.biblioteca.command.CommandFactory;
 import com.twu.biblioteca.command.QuitCommand;
-import com.twu.biblioteca.common.Library;
+import com.twu.biblioteca.library.Library;
 
 public class BibliotecaApp {
 
