@@ -1,5 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.common;
 
+import com.twu.biblioteca.common.Ui;
 import com.twu.biblioteca.library.Book;
 import com.twu.biblioteca.library.Movie;
 import com.twu.biblioteca.library.Rating;

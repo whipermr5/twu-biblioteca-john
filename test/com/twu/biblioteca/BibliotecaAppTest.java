@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.command.ListBooksCommand;
 import com.twu.biblioteca.command.QuitCommand;
+import com.twu.biblioteca.common.Ui;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

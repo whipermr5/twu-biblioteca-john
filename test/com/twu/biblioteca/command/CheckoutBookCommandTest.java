@@ -2,7 +2,7 @@ package com.twu.biblioteca.command;
 
 import com.twu.biblioteca.library.Book;
 import com.twu.biblioteca.library.Library;
-import com.twu.biblioteca.Ui;
+import com.twu.biblioteca.common.Ui;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
