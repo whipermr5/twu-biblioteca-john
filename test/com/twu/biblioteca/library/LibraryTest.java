@@ -65,6 +65,24 @@ public class LibraryTest {
     }
 
     @Test
+    public void testGetBooksBorrowedBy() {
+        library.checkoutItem(thirdItem.getId(), "user");
+        assertTrue(library.getBooksBorrowedBy("user").isEmpty());
+
+        library.checkoutItem(firstItem.getId(), "user");
+        assertEquals(Collections.singletonList(firstItem), library.getBooksBorrowedBy("user"));
+    }
+
+    @Test
+    public void testGetMoviesBorrowedBy() {
+        library.checkoutItem(firstItem.getId(), "user");
+        assertTrue(library.getMoviesBorrowedBy("user").isEmpty());
+
+        library.checkoutItem(thirdItem.getId(), "user");
+        assertEquals(Collections.singletonList(thirdItem), library.getMoviesBorrowedBy("user"));
+    }
+
+    @Test
     public void testCheckoutItem() {
         List<Item> originalItems = library.getAvailableItems();
         assertEquals(Arrays.asList(firstItem, secondItem, thirdItem), originalItems);

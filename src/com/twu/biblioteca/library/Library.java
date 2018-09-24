@@ -38,7 +38,13 @@ public class Library {
     }
 
     public List<Book> getBooksBorrowedBy(String borrowerId) {
-        return getItemsBorrowedBy(borrowerId).stream().map(Book.class::cast).collect(Collectors.toList());
+        return getItemsBorrowedBy(borrowerId).stream().filter(item -> item instanceof Book).map(Book.class::cast)
+                .collect(Collectors.toList());
+    }
+
+    public List<Movie> getMoviesBorrowedBy(String borrowerId) {
+        return getItemsBorrowedBy(borrowerId).stream().filter(item -> item instanceof Movie).map(Movie.class::cast)
+                .collect(Collectors.toList());
     }
 
     public boolean checkoutItem(String itemId, String borrowerId) {
