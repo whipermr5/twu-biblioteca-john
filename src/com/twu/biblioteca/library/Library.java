@@ -7,23 +7,24 @@ import java.util.stream.Collectors;
 
 public class Library {
 
-    private List<Book> books = Arrays.asList(
+    private List<Item> items = Arrays.asList(
             new Book("TDD", "Kent", 2002), new Book("Refactoring", "Martin", 1999));
 
     private HashMap<String, String> itemBorrowerMap = new HashMap<>();
 
     public List<Book> getAvailableBooks() {
-        return books.stream().filter(this::isAvailable).collect(Collectors.toList());
+        return items.stream().filter(this::isAvailable).map(Book.class::cast).collect(Collectors.toList());
     }
 
     public List<Book> getBooksBorrowedBy(String borrowerId) {
-        return books.stream().filter(book -> borrowerId.equals(getBorrower(book))).collect(Collectors.toList());
+        return items.stream().filter(book -> borrowerId.equals(getBorrower(book)))
+                .map(Book.class::cast).collect(Collectors.toList());
     }
 
     public boolean checkout(String bookId, String borrowerId) {
-        for (Book book : getAvailableBooks()) {
-            if (book.getId().equals(bookId)) {
-                itemBorrowerMap.put(book.getId(), borrowerId);
+        for (Item item : getAvailableBooks()) {
+            if (item.getId().equals(bookId)) {
+                itemBorrowerMap.put(item.getId(), borrowerId);
                 return true;
             }
         }
@@ -31,20 +32,20 @@ public class Library {
     }
 
     public boolean returnBook(String bookId, String borrowerId) {
-        for (Book book : getBooksBorrowedBy(borrowerId)) {
-            if (book.getId().equals(bookId)) {
-                itemBorrowerMap.remove(book.getId());
+        for (Item item : getBooksBorrowedBy(borrowerId)) {
+            if (item.getId().equals(bookId)) {
+                itemBorrowerMap.remove(item.getId());
                 return true;
             }
         }
         return false;
     }
 
-    private boolean isAvailable(Book book) {
-        return !itemBorrowerMap.containsKey(book.getId());
+    private boolean isAvailable(Item item) {
+        return !itemBorrowerMap.containsKey(item.getId());
     }
 
-    private String getBorrower(Book book) {
-        return itemBorrowerMap.get(book.getId());
+    private String getBorrower(Item item) {
+        return itemBorrowerMap.get(item.getId());
     }
 }
