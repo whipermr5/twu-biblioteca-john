@@ -14,6 +14,7 @@ public class Ui {
     public static final String ID_LIST_BOOKS = "lb";
     public static final String ID_LIST_MOVIES = "lm";
     public static final String ID_CHECKOUT = "c";
+    public static final String ID_CHECKOUT_MOVIE = "cm";
     public static final String ID_RETURN = "r";
     public static final String ID_QUIT = "q";
 
