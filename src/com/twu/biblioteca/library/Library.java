@@ -7,10 +7,16 @@ import java.util.stream.Collectors;
 
 public class Library {
 
-    private List<Item> items = Arrays.asList(
-            new Book("TDD", "Kent", 2002), new Book("Refactoring", "Martin", 1999));
+    private List<Item> items;
 
     private HashMap<String, String> itemBorrowerMap = new HashMap<>();
+
+    public Library() {
+        items = Arrays.asList(
+                new Book("TDD", "Kent", 2002),
+                new Book("Refactoring", "Martin", 1999)
+        );
+    }
 
     public List<Item> getAvailableItems() {
         return items.stream().filter(this::isAvailable).collect(Collectors.toList());
