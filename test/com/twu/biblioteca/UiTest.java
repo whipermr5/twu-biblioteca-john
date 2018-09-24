@@ -1,6 +1,8 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.library.Book;
+import com.twu.biblioteca.library.Movie;
+import com.twu.biblioteca.library.Rating;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
@@ -41,8 +43,25 @@ public class UiTest {
                 Ui.formatBookList(Arrays.asList(book1, book2)));
     }
 
+    @Test
+    public void testFormatMovieList() {
+        assertNull(Ui.formatMovieList(null));
+
+        assertEquals(Ui.NO_MOVIES, Ui.formatMovieList(Collections.emptyList()));
+
+        Movie movie = new Movie("TDAD", 2004, "Roland", Rating.UNRATED);
+
+        assertEquals(Ui.MOVIE_LIST_HEADER + expectedFormat(movie),
+                Ui.formatMovieList(Collections.singletonList(movie)));
+    }
+
     private static String expectedFormat(Book book) {
         return String.format(Ui.BOOK_DETAILS_FORMAT_STRING,
                 book.getId(), book.getTitle(), book.getAuthor(), book.getYear());
+    }
+
+    private static String expectedFormat(Movie movie) {
+        return String.format(Ui.MOVIE_DETAILS_FORMAT_STRING,
+                movie.getId(), movie.getName(), movie.getYear(), movie.getDirector(), movie.getRating());
     }
 }

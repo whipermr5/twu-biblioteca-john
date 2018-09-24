@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.library.Book;
+import com.twu.biblioteca.library.Movie;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -25,6 +26,7 @@ public class Ui {
     public static final String INVALID_OPTION = "Select a valid option!";
     public static final String SELECT_BOOK = "Please select a book: ";
     public static final String NO_BOOKS = "No books!";
+    public static final String NO_MOVIES = "No movies!";
     public static final String CHECKOUT_SUCCESS = "Thank you! Enjoy the book";
     public static final String CHECKOUT_FAILURE = "That book is not available.";
     public static final String RETURN_SUCCESS = "Thank you for returning the book.";
@@ -35,6 +37,10 @@ public class Ui {
     static final String BOOK_LIST_HEADER = "----------------------------- Available Books -----------------------------"
             + String.format(Ui.BOOK_DETAILS_FORMAT_STRING, "ID", "Title", "Author", "Year") + System.lineSeparator()
             + "---------------------------------------------------------------------------";
+    static final String MOVIE_DETAILS_FORMAT_STRING = "%n%-2s | %-40s | %-4s | %-20s | %5s";
+    static final String MOVIE_LIST_HEADER = "--------------------------------- Available Movies ----------------------------------"
+            + String.format(Ui.MOVIE_DETAILS_FORMAT_STRING, "ID", "Name", "Year", "Director", "Rating") + System.lineSeparator()
+            + "-------------------------------------------------------------------------------------";
 
     public static String getUserInput(InputStream in, OutputStream out, String messageToUser) {
         PrintStream outStream = new PrintStream(out);
@@ -58,6 +64,23 @@ public class Ui {
         for (Book book : books) {
             sb.append(String.format(BOOK_DETAILS_FORMAT_STRING,
                     book.getId(), book.getTitle(), book.getAuthor(), book.getYear()));
+        }
+        return sb.toString();
+    }
+
+    public static String formatMovieList(List<Movie> movies) {
+        if (movies == null) {
+            return null;
+        }
+
+        if (movies.isEmpty()) {
+            return NO_MOVIES;
+        }
+
+        StringBuilder sb = new StringBuilder(MOVIE_LIST_HEADER);
+        for (Movie movie : movies) {
+            sb.append(String.format(MOVIE_DETAILS_FORMAT_STRING,
+                    movie.getId(), movie.getName(), movie.getYear(), movie.getDirector(), movie.getRating()));
         }
         return sb.toString();
     }
