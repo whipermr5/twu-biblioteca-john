@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class Ui {
 
-    public static final String ID_LIST_BOOKS = "l";
+    public static final String ID_LIST_BOOKS = "lb";
     public static final String ID_LIST_MOVIES = "lm";
     public static final String ID_CHECKOUT = "c";
     public static final String ID_RETURN = "r";
@@ -26,8 +26,10 @@ public class Ui {
             + ID_QUIT + " - Quit" + System.lineSeparator()
             + "Please select an option: ";
     public static final String INVALID_OPTION = "Select a valid option!";
-    public static final String SELECT_BOOK = "Please select a book: ";
-    public static final String NO_BOOKS = "No books!";
+    public static final String SELECT_BOOK_CHECKOUT = "Enter ID of book to checkout: ";
+    public static final String SELECT_BOOK_RETURN = "Enter ID of book to return: ";
+    public static final String NO_BOOKS_AVAILABLE = "No books available!";
+    public static final String NO_BOOKS_CHECKED_OUT = "You have not checked out any books.";
     public static final String NO_MOVIES = "No movies!";
     public static final String CHECKOUT_SUCCESS = "Thank you! Enjoy the book";
     public static final String CHECKOUT_FAILURE = "That book is not available.";
@@ -61,7 +63,7 @@ public class Ui {
         }
 
         if (books.isEmpty()) {
-            return NO_BOOKS;
+            return NO_BOOKS_AVAILABLE;
         }
 
         StringBuilder sb = new StringBuilder(BOOK_LIST_HEADER);

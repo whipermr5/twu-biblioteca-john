@@ -24,7 +24,7 @@ public class CheckoutBookCommandTest {
 
         Command command = CommandFactory.get(Ui.ID_CHECKOUT);
         String expected = Ui.formatBookList(library.getAvailableBooks()) + System.lineSeparator()
-                + Ui.SELECT_BOOK + System.lineSeparator()
+                + Ui.SELECT_BOOK_CHECKOUT + System.lineSeparator()
                 + Ui.CHECKOUT_SUCCESS + System.lineSeparator();
         command.execute(library, in, out);
         assertEquals(expected, out.toString());
@@ -33,7 +33,7 @@ public class CheckoutBookCommandTest {
         in = new ByteArrayInputStream(book.getId().getBytes());
         out = new ByteArrayOutputStream();
         expected = Ui.formatBookList(library.getAvailableBooks()) + System.lineSeparator()
-                + Ui.SELECT_BOOK + System.lineSeparator()
+                + Ui.SELECT_BOOK_CHECKOUT + System.lineSeparator()
                 + Ui.CHECKOUT_FAILURE + System.lineSeparator();
         command.execute(library, in, out);
         assertEquals(expected, out.toString());
@@ -42,13 +42,13 @@ public class CheckoutBookCommandTest {
         in = new ByteArrayInputStream(remainingBook.getId().getBytes());
         out = new ByteArrayOutputStream();
         expected = Ui.formatBookList(library.getAvailableBooks()) + System.lineSeparator()
-                + Ui.SELECT_BOOK + System.lineSeparator()
+                + Ui.SELECT_BOOK_CHECKOUT + System.lineSeparator()
                 + Ui.CHECKOUT_SUCCESS + System.lineSeparator();
         command.execute(library, in, out);
         assertEquals(expected, out.toString());
 
         out = new ByteArrayOutputStream();
         command.execute(library, null, out);
-        assertEquals(Ui.NO_BOOKS + System.lineSeparator(), out.toString());
+        assertEquals(Ui.NO_BOOKS_AVAILABLE + System.lineSeparator(), out.toString());
     }
 }

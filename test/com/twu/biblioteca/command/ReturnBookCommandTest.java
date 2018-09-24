@@ -26,7 +26,7 @@ public class ReturnBookCommandTest {
 
         Command command = CommandFactory.get(Ui.ID_RETURN);
         command.execute(library, null, out);
-        assertEquals(Ui.NO_BOOKS + System.lineSeparator(), out.toString());
+        assertEquals(Ui.NO_BOOKS_CHECKED_OUT + System.lineSeparator(), out.toString());
 
         library.checkoutItem(firstBook.getId(), "user");
         assertEquals(Collections.singletonList(firstBook), library.getBooksBorrowedBy("user"));
@@ -35,7 +35,7 @@ public class ReturnBookCommandTest {
         out = new ByteArrayOutputStream();
 
         String expected = Ui.formatBookList(library.getBooksBorrowedBy("user")) + System.lineSeparator()
-                + Ui.SELECT_BOOK + System.lineSeparator()
+                + Ui.SELECT_BOOK_RETURN + System.lineSeparator()
                 + Ui.RETURN_FAILURE + System.lineSeparator();
         command.execute(library, in, out);
         assertEquals(expected, out.toString());
@@ -44,7 +44,7 @@ public class ReturnBookCommandTest {
         out = new ByteArrayOutputStream();
 
         expected = Ui.formatBookList(library.getBooksBorrowedBy("user")) + System.lineSeparator()
-                + Ui.SELECT_BOOK + System.lineSeparator()
+                + Ui.SELECT_BOOK_RETURN + System.lineSeparator()
                 + Ui.RETURN_SUCCESS + System.lineSeparator();
         command.execute(library, in, out);
         assertEquals(expected, out.toString());

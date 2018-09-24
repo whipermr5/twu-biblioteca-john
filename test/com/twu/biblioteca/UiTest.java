@@ -31,7 +31,7 @@ public class UiTest {
     public void testFormatBookList() {
         assertNull(Ui.formatBookList(null));
 
-        assertEquals(Ui.NO_BOOKS, Ui.formatBookList(Collections.emptyList()));
+        assertEquals(Ui.NO_BOOKS_AVAILABLE, Ui.formatBookList(Collections.emptyList()));
 
         Book book1 = new Book("TDD", "Kent", 2002);
         Book book2 = new Book("Refactoring", "Martin", 1999);
