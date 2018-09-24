@@ -1,5 +1,6 @@
 package com.twu.biblioteca.command;
 
+import com.twu.biblioteca.library.Book;
 import com.twu.biblioteca.library.Library;
 import com.twu.biblioteca.library.Movie;
 import org.junit.Before;
@@ -11,6 +12,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class MovieCommandTest {
 
@@ -35,5 +37,11 @@ public class MovieCommandTest {
     @Test
     public void testGetMoviesBorrowedBy() {
         assertEquals(Collections.singletonList(thirdItem), MovieCommand.getMoviesBorrowedBy(library, "user"));
+    }
+
+    @Test
+    public void testIsMovie() {
+        assertTrue(MovieCommand.isMovie(thirdItem));
+        assertFalse(MovieCommand.isMovie(new Book(null, null, 0)));
     }
 }

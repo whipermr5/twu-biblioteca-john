@@ -1,5 +1,6 @@
 package com.twu.biblioteca.command;
 
+import com.twu.biblioteca.library.Item;
 import com.twu.biblioteca.library.Library;
 import com.twu.biblioteca.library.Movie;
 
@@ -17,5 +18,9 @@ abstract class MovieCommand extends Command {
         return library.getItemsBorrowedBy(borrowerId).stream()
                 .filter(item -> item instanceof Movie).map(Movie.class::cast)
                 .collect(Collectors.toList());
+    }
+
+    static boolean isMovie(Item item) {
+        return item instanceof Movie;
     }
 }
