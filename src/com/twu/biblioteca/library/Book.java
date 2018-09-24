@@ -7,17 +7,12 @@ public class Book {
     private String title;
     private String author;
     private int year;
-    private String owner;
 
     public Book(String title, String author, int year) {
         this.id = ++count;
         this.title = title;
         this.author = author;
         this.year = year;
-    }
-
-    void setOwner(String owner) {
-        this.owner = owner;
     }
 
     public String getId() {
@@ -34,13 +29,5 @@ public class Book {
 
     public int getYear() {
         return year;
-    }
-
-    public String getOwner() {
-        return owner;
-    }
-
-    public boolean isAvailable() {
-        return owner == null;
     }
 }

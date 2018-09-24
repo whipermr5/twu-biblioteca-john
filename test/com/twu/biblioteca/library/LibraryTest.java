@@ -29,7 +29,7 @@ public class LibraryTest {
     public void testGetAvailableBooks() {
         List<Book> originalBooks = library.getAvailableBooks();
 
-        firstBook.setOwner("user");
+        library.checkout(firstBook.getId(), "user");
 
         assertTrue(originalBooks.contains(firstBook));
         assertFalse(library.getAvailableBooks().contains(firstBook));
@@ -39,13 +39,13 @@ public class LibraryTest {
     public void testGetCustomerBooks() {
         assertTrue(library.getCustomerBooks("user").isEmpty());
 
-        firstBook.setOwner("user");
+        library.checkout(firstBook.getId(), "user");
         assertEquals(Collections.singletonList(firstBook), library.getCustomerBooks("user"));
 
-        secondBook.setOwner("user");
+        library.checkout(secondBook.getId(), "user");
         assertEquals(Arrays.asList(firstBook, secondBook), library.getCustomerBooks("user"));
 
-        firstBook.setOwner(null);
+        library.returnBook(firstBook.getId(), "user");
         assertEquals(Collections.singletonList(secondBook), library.getCustomerBooks("user"));
     }
 
