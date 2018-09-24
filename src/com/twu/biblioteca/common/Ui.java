@@ -52,6 +52,9 @@ public class Ui {
             + System.lineSeparator()
             + "-----------------------------------------------------------------------------------------";
 
+    public static final String RATING_SYMBOL = "*";
+    public static final String UNRATED = "Unrated";
+
     public static String getUserInput(InputStream in, OutputStream out, String messageToUser) {
         PrintStream outStream = new PrintStream(out);
         outStream.print(messageToUser);

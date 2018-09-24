@@ -1,5 +1,6 @@
 package com.twu.biblioteca.library;
 
+import com.twu.biblioteca.common.Ui;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -35,8 +36,7 @@ public class RatingTest {
 
     @Test
     public void testToString() {
-        assertEquals("Unrated", Rating.UNRATED.toString());
-        for (int i = 1; i <= 10; i++) {
+        for (int i = 0; i <= 10; i++) {
             Rating rating = Rating.of(i);
             assertEquals(expectedFormat(rating), rating.toString());
         }
@@ -44,11 +44,11 @@ public class RatingTest {
 
     private static String expectedFormat(Rating rating) {
         if (rating == Rating.UNRATED) {
-            return "Unrated";
+            return Ui.UNRATED;
         }
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < rating.getValue(); i++) {
-            sb.append("*");
+            sb.append(Ui.RATING_SYMBOL);
         }
         return sb.toString();
     }
