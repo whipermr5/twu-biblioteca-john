@@ -8,6 +8,9 @@ public class CommandFactory {
         if (Ui.ID_LIST_BOOKS.equals(userInput)) {
             return new ListBooksCommand();
         }
+        if (Ui.ID_LIST_MOVIES.equals(userInput)) {
+            return new ListMoviesCommand();
+        }
         if (Ui.ID_CHECKOUT.equals(userInput)) {
             return new CheckoutBookCommand();
         }

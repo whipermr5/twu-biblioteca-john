@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class Ui {
 
     public static final String ID_LIST_BOOKS = "l";
+    public static final String ID_LIST_MOVIES = "lm";
     public static final String ID_CHECKOUT = "c";
     public static final String ID_RETURN = "r";
     public static final String ID_QUIT = "q";
@@ -19,6 +20,7 @@ public class Ui {
     public static final String WELCOME = "Welcome!";
     public static final String MENU = System.lineSeparator() + "------ MENU ------" + System.lineSeparator()
             + ID_LIST_BOOKS + " - List Books" + System.lineSeparator()
+            + ID_LIST_MOVIES + " - List Movies" + System.lineSeparator()
             + ID_CHECKOUT + " - Checkout Book" + System.lineSeparator()
             + ID_RETURN + " - Return Book" + System.lineSeparator()
             + ID_QUIT + " - Quit" + System.lineSeparator()
