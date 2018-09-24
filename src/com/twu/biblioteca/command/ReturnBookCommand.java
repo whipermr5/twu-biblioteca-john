@@ -6,7 +6,7 @@ import com.twu.biblioteca.Ui;
 import java.io.InputStream;
 import java.io.PrintStream;
 
-public class ReturnCommand extends Command {
+public class ReturnBookCommand extends Command {
 
     public void execute(Library library, InputStream in, PrintStream out) {
         if (library.getBooksBorrowedBy("user").isEmpty()) {

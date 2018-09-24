@@ -13,7 +13,7 @@ import java.io.OutputStream;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
-public class CheckoutCommandTest {
+public class CheckoutBookCommandTest {
 
     @Test
     public void testExecute() {

@@ -6,7 +6,7 @@ import com.twu.biblioteca.Ui;
 import java.io.InputStream;
 import java.io.PrintStream;
 
-public class CheckoutCommand extends Command {
+public class CheckoutBookCommand extends Command {
 
     public void execute(Library library, InputStream in, PrintStream out) {
         if (library.getAvailableBooks().isEmpty()) {
@@ -15,7 +15,7 @@ public class CheckoutCommand extends Command {
         }
         out.println(Ui.formatBookList(library.getAvailableBooks()));
         String bookId = Ui.getUserInput(in, out, Ui.SELECT_BOOK);
-        boolean wasSuccessful = library.checkout(bookId, "user");
+        boolean wasSuccessful = library.checkoutBook(bookId, "user");
         out.println(wasSuccessful ? Ui.CHECKOUT_SUCCESS : Ui.CHECKOUT_FAILURE);
     }
 }

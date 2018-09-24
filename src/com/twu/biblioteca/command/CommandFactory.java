@@ -9,10 +9,10 @@ public class CommandFactory {
             return new ListBooksCommand();
         }
         if (Ui.ID_CHECKOUT.equals(userInput)) {
-            return new CheckoutCommand();
+            return new CheckoutBookCommand();
         }
         if (Ui.ID_RETURN.equals(userInput)) {
-            return new ReturnCommand();
+            return new ReturnBookCommand();
         }
         if (Ui.ID_QUIT.equals(userInput)) {
             return new QuitCommand();

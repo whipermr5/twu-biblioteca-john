@@ -21,7 +21,7 @@ public class Library {
                 .map(Book.class::cast).collect(Collectors.toList());
     }
 
-    public boolean checkout(String bookId, String borrowerId) {
+    public boolean checkoutBook(String bookId, String borrowerId) {
         for (Item item : getAvailableBooks()) {
             if (item.getId().equals(bookId)) {
                 itemBorrowerMap.put(item.getId(), borrowerId);

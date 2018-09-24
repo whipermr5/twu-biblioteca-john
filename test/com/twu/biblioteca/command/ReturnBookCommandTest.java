@@ -14,7 +14,7 @@ import java.util.Collections;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
-public class ReturnCommandTest {
+public class ReturnBookCommandTest {
 
     @Test
     public void testExecute() {
@@ -28,7 +28,7 @@ public class ReturnCommandTest {
         command.execute(library, null, out);
         assertEquals(Ui.NO_BOOKS + System.lineSeparator(), out.toString());
 
-        library.checkout(firstBook.getId(), "user");
+        library.checkoutBook(firstBook.getId(), "user");
         assertEquals(Collections.singletonList(firstBook), library.getBooksBorrowedBy("user"));
 
         InputStream in = new ByteArrayInputStream(secondBook.getId().getBytes());

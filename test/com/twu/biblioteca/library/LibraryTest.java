@@ -29,7 +29,7 @@ public class LibraryTest {
     public void testGetAvailableBooks() {
         List<Item> originalItems = (List) library.getAvailableBooks();
 
-        library.checkout(firstItem.getId(), "user");
+        library.checkoutBook(firstItem.getId(), "user");
 
         assertTrue(originalItems.contains(firstItem));
         assertFalse(library.getAvailableBooks().contains(firstItem));
@@ -39,10 +39,10 @@ public class LibraryTest {
     public void testGetBooksBorrowedBy() {
         assertTrue(library.getBooksBorrowedBy("user").isEmpty());
 
-        library.checkout(firstItem.getId(), "user");
+        library.checkoutBook(firstItem.getId(), "user");
         assertEquals(Collections.singletonList(firstItem), library.getBooksBorrowedBy("user"));
 
-        library.checkout(secondItem.getId(), "user");
+        library.checkoutBook(secondItem.getId(), "user");
         assertEquals(Arrays.asList(firstItem, secondItem), library.getBooksBorrowedBy("user"));
 
         library.returnBook(firstItem.getId(), "user");
@@ -53,19 +53,19 @@ public class LibraryTest {
     public void testCheckout() {
         List<Item> originalItems = (List) library.getAvailableBooks();
         assertEquals(Arrays.asList(firstItem, secondItem), originalItems);
-        assertTrue(library.checkout(firstItem.getId(), "user"));
+        assertTrue(library.checkoutBook(firstItem.getId(), "user"));
         assertEquals(Collections.singletonList(secondItem), library.getAvailableBooks());
 
-        assertTrue(library.checkout(secondItem.getId(), "user"));
+        assertTrue(library.checkoutBook(secondItem.getId(), "user"));
         assertTrue(library.getAvailableBooks().isEmpty());
 
-        assertFalse(library.checkout(secondItem.getId(), "user"));
+        assertFalse(library.checkoutBook(secondItem.getId(), "user"));
     }
 
     @Test
     public void testReturnBook() {
-        library.checkout(firstItem.getId(), "user");
-        library.checkout(secondItem.getId(), "user");
+        library.checkoutBook(firstItem.getId(), "user");
+        library.checkoutBook(secondItem.getId(), "user");
         assertEquals(Arrays.asList(firstItem, secondItem), library.getBooksBorrowedBy("user"));
         assertTrue(library.getAvailableBooks().isEmpty());
 
