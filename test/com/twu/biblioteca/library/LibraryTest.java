@@ -10,6 +10,7 @@ import java.util.List;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 
 public class LibraryTest {
 
@@ -49,6 +50,12 @@ public class LibraryTest {
 
         library.returnItem(firstItem.getId(), "user");
         assertEquals(Collections.singletonList(secondItem), library.getItemsBorrowedBy("user"));
+    }
+
+    @Test
+    public void testGetItem() {
+        assertEquals(firstItem, library.getItem(firstItem.getId()));
+        assertNull(library.getItem(""));
     }
 
     @Test

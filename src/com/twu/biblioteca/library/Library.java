@@ -27,6 +27,15 @@ public class Library {
         return items.stream().filter(item -> borrowerId.equals(getBorrower(item))).collect(Collectors.toList());
     }
 
+    public Item getItem(String itemId) {
+        for (Item item : items) {
+            if (item.getId().equals(itemId)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
     public boolean checkoutItem(String itemId, String borrowerId) {
         for (Item item : getAvailableItems()) {
             if (item.getId().equals(itemId)) {
