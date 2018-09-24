@@ -25,7 +25,7 @@ public class CheckoutBookCommandTest {
         Command command = CommandFactory.get(Ui.ID_CHECKOUT);
         String expected = Ui.formatBooksAvailable(library.getAvailableBooks()) + System.lineSeparator()
                 + Ui.SELECT_BOOK_CHECKOUT + System.lineSeparator()
-                + Ui.CHECKOUT_SUCCESS + System.lineSeparator();
+                + Ui.CHECKOUT_BOOK_SUCCESS + System.lineSeparator();
         command.execute(library, in, out);
         assertEquals(expected, out.toString());
         assertFalse(library.getAvailableBooks().contains(book));
@@ -34,7 +34,7 @@ public class CheckoutBookCommandTest {
         out = new ByteArrayOutputStream();
         expected = Ui.formatBooksAvailable(library.getAvailableBooks()) + System.lineSeparator()
                 + Ui.SELECT_BOOK_CHECKOUT + System.lineSeparator()
-                + Ui.CHECKOUT_FAILURE + System.lineSeparator();
+                + Ui.CHECKOUT_BOOK_FAILURE + System.lineSeparator();
         command.execute(library, in, out);
         assertEquals(expected, out.toString());
 
@@ -43,7 +43,7 @@ public class CheckoutBookCommandTest {
         out = new ByteArrayOutputStream();
         expected = Ui.formatBooksAvailable(library.getAvailableBooks()) + System.lineSeparator()
                 + Ui.SELECT_BOOK_CHECKOUT + System.lineSeparator()
-                + Ui.CHECKOUT_SUCCESS + System.lineSeparator();
+                + Ui.CHECKOUT_BOOK_SUCCESS + System.lineSeparator();
         command.execute(library, in, out);
         assertEquals(expected, out.toString());
 

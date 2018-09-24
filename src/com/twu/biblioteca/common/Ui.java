@@ -32,10 +32,10 @@ public class Ui {
     public static final String NO_BOOKS_CHECKED_OUT = "You have not checked out any books.";
     public static final String NO_MOVIES_AVAILABLE = "No movies available!";
     public static final String NO_MOVIES_CHECKED_OUT = "You have not checked out any movies.";
-    public static final String CHECKOUT_SUCCESS = "Thank you! Enjoy the book";
-    public static final String CHECKOUT_FAILURE = "That book is not available.";
-    public static final String RETURN_SUCCESS = "Thank you for returning the book.";
-    public static final String RETURN_FAILURE = "That is not a valid book to return.";
+    public static final String CHECKOUT_BOOK_SUCCESS = "Thank you! Enjoy the book";
+    public static final String CHECKOUT_BOOK_FAILURE = "That book is not available.";
+    public static final String RETURN_BOOK_SUCCESS = "Thank you for returning the book.";
+    public static final String RETURN_BOOK_FAILURE = "That is not a valid book to return.";
     public static final String GOODBYE = "Goodbye!";
 
     static final String BOOKS_AVAILABLE =
