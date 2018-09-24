@@ -1,6 +1,6 @@
 package com.twu.biblioteca.command;
 
-import com.twu.biblioteca.common.Ui;
+import com.twu.biblioteca.Ui;
 
 public class CommandFactory {
 

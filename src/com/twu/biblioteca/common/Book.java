@@ -9,7 +9,7 @@ public class Book {
     private int year;
     private String owner;
 
-    Book(String title, String author, int year) {
+    public Book(String title, String author, int year) {
         this.id = ++count;
         this.title = title;
         this.author = author;
