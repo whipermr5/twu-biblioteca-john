@@ -28,7 +28,7 @@ public class ReturnBookCommandTest {
         command.execute(library, null, out);
         assertEquals(Ui.NO_BOOKS + System.lineSeparator(), out.toString());
 
-        library.checkoutBook(firstBook.getId(), "user");
+        library.checkoutItem(firstBook.getId(), "user");
         assertEquals(Collections.singletonList(firstBook), library.getBooksBorrowedBy("user"));
 
         InputStream in = new ByteArrayInputStream(secondBook.getId().getBytes());

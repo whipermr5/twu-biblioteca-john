@@ -12,18 +12,25 @@ public class Library {
 
     private HashMap<String, String> itemBorrowerMap = new HashMap<>();
 
+    public List<Item> getAvailableItems() {
+        return items.stream().filter(this::isAvailable).collect(Collectors.toList());
+    }
+
     public List<Book> getAvailableBooks() {
-        return items.stream().filter(this::isAvailable).map(Book.class::cast).collect(Collectors.toList());
+        return getAvailableItems().stream().map(Book.class::cast).collect(Collectors.toList());
+    }
+
+    public List<Item> getItemsBorrowedBy(String borrowerId) {
+        return items.stream().filter(item -> borrowerId.equals(getBorrower(item))).collect(Collectors.toList());
     }
 
     public List<Book> getBooksBorrowedBy(String borrowerId) {
-        return items.stream().filter(book -> borrowerId.equals(getBorrower(book)))
-                .map(Book.class::cast).collect(Collectors.toList());
+        return getItemsBorrowedBy(borrowerId).stream().map(Book.class::cast).collect(Collectors.toList());
     }
 
-    public boolean checkoutBook(String bookId, String borrowerId) {
-        for (Item item : getAvailableBooks()) {
-            if (item.getId().equals(bookId)) {
+    public boolean checkoutItem(String itemId, String borrowerId) {
+        for (Item item : getAvailableItems()) {
+            if (item.getId().equals(itemId)) {
                 itemBorrowerMap.put(item.getId(), borrowerId);
                 return true;
             }
@@ -31,9 +38,9 @@ public class Library {
         return false;
     }
 
-    public boolean returnBook(String bookId, String borrowerId) {
-        for (Item item : getBooksBorrowedBy(borrowerId)) {
-            if (item.getId().equals(bookId)) {
+    public boolean returnItem(String itemId, String borrowerId) {
+        for (Item item : getItemsBorrowedBy(borrowerId)) {
+            if (item.getId().equals(itemId)) {
                 itemBorrowerMap.remove(item.getId());
                 return true;
             }
