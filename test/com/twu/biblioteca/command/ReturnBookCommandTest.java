@@ -1,8 +1,9 @@
 package com.twu.biblioteca.command;
 
+import com.twu.biblioteca.common.Ui;
 import com.twu.biblioteca.library.Book;
 import com.twu.biblioteca.library.Library;
-import com.twu.biblioteca.common.Ui;
+import com.twu.biblioteca.library.Movie;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
@@ -35,6 +36,19 @@ public class ReturnBookCommandTest {
         out = new ByteArrayOutputStream();
 
         String expected = Ui.formatBooksCheckedOut(
+                BookCommand.getBooksBorrowedBy(library, "user")) + System.lineSeparator()
+                + Ui.SELECT_BOOK_RETURN + System.lineSeparator()
+                + Ui.RETURN_BOOK_FAILURE + System.lineSeparator();
+        command.execute(library, in, out);
+        assertEquals(expected, out.toString());
+
+        Movie movie = MovieCommand.getAvailableMovies(library).iterator().next();
+        library.checkoutItem(movie.getId(), "user");
+
+        in = new ByteArrayInputStream(movie.getId().getBytes());
+        out = new ByteArrayOutputStream();
+
+        expected = Ui.formatBooksCheckedOut(
                 BookCommand.getBooksBorrowedBy(library, "user")) + System.lineSeparator()
                 + Ui.SELECT_BOOK_RETURN + System.lineSeparator()
                 + Ui.RETURN_BOOK_FAILURE + System.lineSeparator();

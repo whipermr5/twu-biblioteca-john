@@ -1,8 +1,9 @@
 package com.twu.biblioteca.command;
 
+import com.twu.biblioteca.common.Ui;
 import com.twu.biblioteca.library.Book;
 import com.twu.biblioteca.library.Library;
-import com.twu.biblioteca.common.Ui;
+import com.twu.biblioteca.library.Movie;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
@@ -31,6 +32,15 @@ public class CheckoutBookCommandTest {
         assertFalse(BookCommand.getAvailableBooks(library).contains(book));
 
         in = new ByteArrayInputStream(book.getId().getBytes());
+        out = new ByteArrayOutputStream();
+        expected = Ui.formatBooksAvailable(BookCommand.getAvailableBooks(library)) + System.lineSeparator()
+                + Ui.SELECT_BOOK_CHECKOUT + System.lineSeparator()
+                + Ui.CHECKOUT_BOOK_FAILURE + System.lineSeparator();
+        command.execute(library, in, out);
+        assertEquals(expected, out.toString());
+
+        Movie movie = MovieCommand.getAvailableMovies(library).iterator().next();
+        in = new ByteArrayInputStream(movie.getId().getBytes());
         out = new ByteArrayOutputStream();
         expected = Ui.formatBooksAvailable(BookCommand.getAvailableBooks(library)) + System.lineSeparator()
                 + Ui.SELECT_BOOK_CHECKOUT + System.lineSeparator()

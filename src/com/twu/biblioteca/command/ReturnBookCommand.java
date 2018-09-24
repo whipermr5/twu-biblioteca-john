@@ -15,6 +15,10 @@ public class ReturnBookCommand extends BookCommand {
         }
         out.println(Ui.formatBooksCheckedOut(getBooksBorrowedBy(library, "user")));
         String bookId = Ui.getUserInput(in, out, Ui.SELECT_BOOK_RETURN);
+        if (!isBook(library.getItem(bookId))) {
+            out.println(Ui.RETURN_BOOK_FAILURE);
+            return;
+        }
         boolean wasSuccessful = library.returnItem(bookId, "user");
         out.println(wasSuccessful ? Ui.RETURN_BOOK_SUCCESS : Ui.RETURN_BOOK_FAILURE);
     }
