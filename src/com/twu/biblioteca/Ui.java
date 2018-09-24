@@ -38,9 +38,11 @@ public class Ui {
             + String.format(Ui.BOOK_DETAILS_FORMAT_STRING, "ID", "Title", "Author", "Year") + System.lineSeparator()
             + "---------------------------------------------------------------------------";
     static final String MOVIE_DETAILS_FORMAT_STRING = "%n%-2s | %-40s | %-4s | %-20s | %5s";
-    static final String MOVIE_LIST_HEADER = "--------------------------------- Available Movies ----------------------------------"
-            + String.format(Ui.MOVIE_DETAILS_FORMAT_STRING, "ID", "Name", "Year", "Director", "Rating") + System.lineSeparator()
-            + "-------------------------------------------------------------------------------------";
+    static final String MOVIE_LIST_HEADER =
+            "----------------------------------- Available Movies ------------------------------------"
+            + String.format(Ui.MOVIE_DETAILS_FORMAT_STRING, "ID", "Name", "Year", "Director", "Rating")
+            + System.lineSeparator()
+            + "-----------------------------------------------------------------------------------------";
 
     public static String getUserInput(InputStream in, OutputStream out, String messageToUser) {
         PrintStream outStream = new PrintStream(out);

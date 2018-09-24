@@ -32,4 +32,24 @@ public class RatingTest {
         assertEquals(Rating.UNRATED, Rating.of(0));
         assertEquals(Rating.UNRATED, Rating.of(11));
     }
+
+    @Test
+    public void testToString() {
+        assertEquals("Unrated", Rating.UNRATED.toString());
+        for (int i = 1; i <= 10; i++) {
+            Rating rating = Rating.of(i);
+            assertEquals(expectedFormat(rating), rating.toString());
+        }
+    }
+
+    private static String expectedFormat(Rating rating) {
+        if (rating == Rating.UNRATED) {
+            return "Unrated";
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < rating.getValue(); i++) {
+            sb.append("*");
+        }
+        return sb.toString();
+    }
 }

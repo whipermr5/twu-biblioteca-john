@@ -19,4 +19,15 @@ public enum Rating {
     public Integer getValue() {
         return value;
     }
+
+    public String toString() {
+        if (this == UNRATED) {
+            return "Unrated";
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < value; i++) {
+            sb.append("*");
+        }
+        return sb.toString();
+    }
 }
