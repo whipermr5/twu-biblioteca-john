@@ -36,11 +36,21 @@ public class UiTest {
         Book book1 = new Book("TDD", "Kent", 2002);
         Book book2 = new Book("Refactoring", "Martin", 1999);
 
-        assertEquals(Ui.BOOK_LIST_HEADER + expectedFormat(book1),
+        assertEquals(Ui.BOOKS_AVAILABLE + Ui.BOOK_LIST_HEADER + expectedFormat(book1),
                 Ui.formatBooksAvailable(Collections.singletonList(book1)));
 
-        assertEquals(Ui.BOOK_LIST_HEADER + expectedFormat(book1) + expectedFormat(book2),
+        assertEquals(Ui.BOOKS_AVAILABLE + Ui.BOOK_LIST_HEADER + expectedFormat(book1) + expectedFormat(book2),
                 Ui.formatBooksAvailable(Arrays.asList(book1, book2)));
+    }
+
+    @Test
+    public void testFormatBooksCheckedOut() {
+        assertEquals(Ui.NO_BOOKS_CHECKED_OUT, Ui.formatBooksCheckedOut(Collections.emptyList()));
+
+        Book book = new Book("TDD", "Kent", 2002);
+
+        assertEquals(Ui.BOOKS_CHECKED_OUT + Ui.BOOK_LIST_HEADER + expectedFormat(book),
+                Ui.formatBooksCheckedOut(Collections.singletonList(book)));
     }
 
     @Test

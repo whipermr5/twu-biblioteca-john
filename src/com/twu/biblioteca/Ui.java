@@ -37,9 +37,13 @@ public class Ui {
     public static final String RETURN_FAILURE = "That is not a valid book to return.";
     public static final String GOODBYE = "Goodbye!";
 
+    static final String BOOKS_AVAILABLE =
+            "---------------------- Books Available for Checkout -----------------------";
+    static final String BOOKS_CHECKED_OUT =
+            "------------------------ Books You've Checked Out -------------------------";
     static final String BOOK_DETAILS_FORMAT_STRING = "%n%-2s | %-40s | %-20s | %4s";
-    static final String BOOK_LIST_HEADER = "----------------------------- Available Books -----------------------------"
-            + String.format(Ui.BOOK_DETAILS_FORMAT_STRING, "ID", "Title", "Author", "Year") + System.lineSeparator()
+    static final String BOOK_LIST_HEADER =
+            String.format(Ui.BOOK_DETAILS_FORMAT_STRING, "ID", "Title", "Author", "Year") + System.lineSeparator()
             + "---------------------------------------------------------------------------";
     static final String MOVIE_DETAILS_FORMAT_STRING = "%n%-2s | %-40s | %-4s | %-20s | %5s";
     static final String MOVIE_LIST_HEADER =
@@ -57,21 +61,30 @@ public class Ui {
         return userInput;
     }
 
-    public static String formatBooksAvailable(List<Book> books) {
+    private static String formatBooks(List<Book> books, String title, String emptyMessage) {
         if (books == null) {
             return null;
         }
 
         if (books.isEmpty()) {
-            return NO_BOOKS_AVAILABLE;
+            return emptyMessage;
         }
 
-        StringBuilder sb = new StringBuilder(BOOK_LIST_HEADER);
+        StringBuilder sb = new StringBuilder(title);
+        sb.append(BOOK_LIST_HEADER);
         for (Book book : books) {
             sb.append(String.format(BOOK_DETAILS_FORMAT_STRING,
                     book.getId(), book.getTitle(), book.getAuthor(), book.getYear()));
         }
         return sb.toString();
+    }
+
+    public static String formatBooksAvailable(List<Book> books) {
+        return formatBooks(books, BOOKS_AVAILABLE, NO_BOOKS_AVAILABLE);
+    }
+
+    public static String formatBooksCheckedOut(List<Book> books) {
+        return formatBooks(books, BOOKS_CHECKED_OUT, NO_BOOKS_CHECKED_OUT);
     }
 
     public static String formatMoviesAvailable(List<Movie> movies) {

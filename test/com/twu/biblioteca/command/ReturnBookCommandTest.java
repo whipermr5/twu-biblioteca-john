@@ -34,7 +34,8 @@ public class ReturnBookCommandTest {
         InputStream in = new ByteArrayInputStream(secondBook.getId().getBytes());
         out = new ByteArrayOutputStream();
 
-        String expected = Ui.formatBooksAvailable(library.getBooksBorrowedBy("user")) + System.lineSeparator()
+        String expected = Ui.formatBooksCheckedOut(
+                library.getBooksBorrowedBy("user")) + System.lineSeparator()
                 + Ui.SELECT_BOOK_RETURN + System.lineSeparator()
                 + Ui.RETURN_FAILURE + System.lineSeparator();
         command.execute(library, in, out);
@@ -43,7 +44,8 @@ public class ReturnBookCommandTest {
         in = new ByteArrayInputStream(firstBook.getId().getBytes());
         out = new ByteArrayOutputStream();
 
-        expected = Ui.formatBooksAvailable(library.getBooksBorrowedBy("user")) + System.lineSeparator()
+        expected = Ui.formatBooksCheckedOut(
+                library.getBooksBorrowedBy("user")) + System.lineSeparator()
                 + Ui.SELECT_BOOK_RETURN + System.lineSeparator()
                 + Ui.RETURN_SUCCESS + System.lineSeparator();
         command.execute(library, in, out);
