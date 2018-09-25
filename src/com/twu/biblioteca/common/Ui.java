@@ -4,7 +4,6 @@ import com.twu.biblioteca.library.Book;
 import com.twu.biblioteca.library.Movie;
 
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.List;
 import java.util.Scanner;
@@ -71,12 +70,11 @@ public class Ui {
     public static final String RATING_SYMBOL = "*";
     public static final String UNRATED = "Unrated";
 
-    public static String getUserInput(InputStream in, OutputStream out, String messageToUser) {
-        PrintStream outStream = new PrintStream(out);
-        outStream.print(messageToUser);
+    public static String getUserInput(InputStream in, PrintStream out, String messageToUser) {
+        out.print(messageToUser);
         Scanner scanner = new Scanner(in);
         String userInput = scanner.nextLine();
-        outStream.println();
+        out.println();
         return userInput;
     }
 
