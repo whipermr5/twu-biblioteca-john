@@ -20,7 +20,7 @@ public class Ui {
     public static final String ID_QUIT = "q";
 
     public static final String WELCOME = "Welcome!";
-    public static final String MENU = System.lineSeparator() + "------ MENU ------" + System.lineSeparator()
+    public static final String MENU = System.lineSeparator() + "------ MENU -------" + System.lineSeparator()
             + ID_LIST_BOOKS + " - List Books" + System.lineSeparator()
             + ID_LIST_MOVIES + " - List Movies" + System.lineSeparator()
             + ID_CHECKOUT_BOOK + " - Checkout Book" + System.lineSeparator()
@@ -58,9 +58,9 @@ public class Ui {
             + "---------------------------------------------------------------------------";
 
     static final String MOVIES_AVAILABLE =
-            "---------------------- Movies Available for Checkout ----------------------";
+            "----------------------------- Movies Available for Checkout -----------------------------";
     static final String MOVIES_CHECKED_OUT =
-            "------------------------ Movies You've Checked Out ------------------------";
+            "------------------------------- Movies You've Checked Out -------------------------------";
     static final String MOVIE_DETAILS_FORMAT_STRING = "%n%-2s | %-40s | %-4s | %-20s | %5s";
     static final String MOVIE_LIST_HEADER =
             String.format(Ui.MOVIE_DETAILS_FORMAT_STRING, "ID", "Name", "Year", "Director", "Rating")
