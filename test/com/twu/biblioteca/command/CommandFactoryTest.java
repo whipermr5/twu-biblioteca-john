@@ -13,7 +13,7 @@ public class CommandFactoryTest {
         assertEquals(ListMoviesCommand.class, CommandFactory.get(Ui.ID_LIST_MOVIES).getClass());
         assertEquals(CheckoutBookCommand.class, CommandFactory.get(Ui.ID_CHECKOUT_BOOK).getClass());
         assertEquals(CheckoutMovieCommand.class, CommandFactory.get(Ui.ID_CHECKOUT_MOVIE).getClass());
-        assertEquals(ReturnBookCommand.class, CommandFactory.get(Ui.ID_RETURN).getClass());
+        assertEquals(ReturnBookCommand.class, CommandFactory.get(Ui.ID_RETURN_BOOK).getClass());
         assertEquals(ReturnMovieCommand.class, CommandFactory.get(Ui.ID_RETURN_MOVIE).getClass());
         assertEquals(QuitCommand.class, CommandFactory.get(Ui.ID_QUIT).getClass());
         assertEquals(InvalidCommand.class, CommandFactory.get("abc").getClass());

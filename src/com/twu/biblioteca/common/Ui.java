@@ -15,7 +15,7 @@ public class Ui {
     public static final String ID_LIST_MOVIES = "lm";
     public static final String ID_CHECKOUT_BOOK = "cb";
     public static final String ID_CHECKOUT_MOVIE = "cm";
-    public static final String ID_RETURN = "r";
+    public static final String ID_RETURN_BOOK = "rb";
     public static final String ID_RETURN_MOVIE = "rm";
     public static final String ID_QUIT = "q";
 
@@ -25,7 +25,8 @@ public class Ui {
             + ID_LIST_MOVIES + " - List Movies" + System.lineSeparator()
             + ID_CHECKOUT_BOOK + " - Checkout Book" + System.lineSeparator()
             + ID_CHECKOUT_MOVIE + " - Checkout Movie" + System.lineSeparator()
-            + ID_RETURN + " - Return Book" + System.lineSeparator()
+            + ID_RETURN_BOOK + " - Return Book" + System.lineSeparator()
+            + ID_RETURN_MOVIE + " - Return Movie" + System.lineSeparator()
             + ID_QUIT + " - Quit" + System.lineSeparator()
             + "Please select an option: ";
     public static final String INVALID_OPTION = "Select a valid option!";

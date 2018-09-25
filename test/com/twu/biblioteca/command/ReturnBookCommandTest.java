@@ -20,7 +20,7 @@ public class ReturnBookCommandTest {
     @Test
     public void testExecute() {
         Library library = new Library();
-        Command command = CommandFactory.get(Ui.ID_RETURN);
+        Command command = CommandFactory.get(Ui.ID_RETURN_BOOK);
 
         Book firstBook = BookCommand.getAvailableBooks(library).get(0);
         Book secondBook = BookCommand.getAvailableBooks(library).get(1);

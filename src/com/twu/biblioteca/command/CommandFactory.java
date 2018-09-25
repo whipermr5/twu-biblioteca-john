@@ -17,7 +17,7 @@ public class CommandFactory {
         if (Ui.ID_CHECKOUT_MOVIE.equals(userInput)) {
             return new CheckoutMovieCommand();
         }
-        if (Ui.ID_RETURN.equals(userInput)) {
+        if (Ui.ID_RETURN_BOOK.equals(userInput)) {
             return new ReturnBookCommand();
         }
         if (Ui.ID_RETURN_MOVIE.equals(userInput)) {
