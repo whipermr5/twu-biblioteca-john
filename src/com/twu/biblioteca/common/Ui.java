@@ -16,6 +16,7 @@ public class Ui {
     public static final String ID_CHECKOUT_BOOK = "cb";
     public static final String ID_CHECKOUT_MOVIE = "cm";
     public static final String ID_RETURN = "r";
+    public static final String ID_RETURN_MOVIE = "rm";
     public static final String ID_QUIT = "q";
 
     public static final String WELCOME = "Welcome!";

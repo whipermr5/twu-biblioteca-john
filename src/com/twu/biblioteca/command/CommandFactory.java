@@ -20,6 +20,9 @@ public class CommandFactory {
         if (Ui.ID_RETURN.equals(userInput)) {
             return new ReturnBookCommand();
         }
+        if (Ui.ID_RETURN_MOVIE.equals(userInput)) {
+            return new ReturnMovieCommand();
+        }
         if (Ui.ID_QUIT.equals(userInput)) {
             return new QuitCommand();
         }
