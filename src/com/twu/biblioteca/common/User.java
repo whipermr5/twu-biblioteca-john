@@ -14,7 +14,7 @@ public class User {
         return username;
     }
 
-    public boolean isPassword(String password) {
+    boolean isPassword(String password) {
         return password.equals(this.password);
     }
 }
