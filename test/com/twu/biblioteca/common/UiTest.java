@@ -11,6 +11,7 @@ import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Collections;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
@@ -27,6 +28,22 @@ public class UiTest {
         String actualInput = Ui.getUserInput(inStream, outStream, messageToUser);
         assertEquals(expectedInput, actualInput);
         assertEquals(messageToUser + System.lineSeparator(), out.toString());
+    }
+
+    @Test
+    public void testGetUserInputs() {
+        String[] expectedInputs = new String[] {"abc", "def"};
+        String[] messagesToUser = new String[] {"message 1", "message 2"};
+
+        String combinedInputs = String.join(System.lineSeparator(), expectedInputs);
+        ByteArrayInputStream inStream = new ByteArrayInputStream(combinedInputs.getBytes());
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        PrintStream outStream = new PrintStream(out);
+
+        String[] actualInputs = Ui.getUserInputs(inStream, outStream, messagesToUser);
+        assertArrayEquals(expectedInputs, actualInputs);
+        String combinedMessagesToUser = String.join("", messagesToUser);
+        assertEquals(combinedMessagesToUser + System.lineSeparator(), out.toString());
     }
 
     @Test

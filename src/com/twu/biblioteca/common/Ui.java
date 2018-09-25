@@ -5,6 +5,7 @@ import com.twu.biblioteca.library.Movie;
 
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -71,11 +72,18 @@ public class Ui {
     public static final String UNRATED = "Unrated";
 
     public static String getUserInput(InputStream in, PrintStream out, String messageToUser) {
-        out.print(messageToUser);
+        return getUserInputs(in, out, messageToUser)[0];
+    }
+
+    public static String[] getUserInputs(InputStream in, PrintStream out, String... messagesToUser) {
         Scanner scanner = new Scanner(in);
-        String userInput = scanner.nextLine();
+        ArrayList<String> userInputs = new ArrayList<>();
+        for (String messageToUser : messagesToUser) {
+            out.print(messageToUser);
+            userInputs.add(scanner.nextLine());
+        }
         out.println();
-        return userInput;
+        return userInputs.toArray(new String[0]);
     }
 
     private static String formatBooks(List<Book> books, String title, String emptyMessage) {
