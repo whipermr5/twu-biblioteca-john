@@ -1,6 +1,7 @@
 package com.twu.biblioteca.common;
 
 import com.twu.biblioteca.library.Book;
+import com.twu.biblioteca.library.Library;
 import com.twu.biblioteca.library.Movie;
 import com.twu.biblioteca.library.Rating;
 import org.junit.Test;
@@ -73,6 +74,20 @@ public class UiTest {
     }
 
     @Test
+    public void testFormatBookRecords() {
+        assertNull(Ui.formatBookRecords(null, null));
+
+        assertEquals(Ui.NO_RECORDS, Ui.formatBookRecords(Collections.emptyList(), null));
+
+        Library library = new Library();
+        Book firstItem = (Book) library.getAvailableItems().iterator().next();
+        library.checkoutItem(firstItem.getId(), "123-4567");
+
+        assertEquals(Ui.RECORDS + Ui.RECORD_LIST_HEADER + expectedFormat(firstItem, library),
+                Ui.formatBookRecords(Collections.singletonList(firstItem), library));
+    }
+
+    @Test
     public void testFormatMoviesAvailable() {
         assertNull(Ui.formatMoviesAvailable(null));
 
@@ -97,6 +112,11 @@ public class UiTest {
     private static String expectedFormat(Book book) {
         return String.format(Ui.BOOK_DETAILS_FORMAT_STRING,
                 book.getId(), book.getTitle(), book.getAuthor(), book.getYear());
+    }
+
+    private static String expectedFormat(Book book, Library library) {
+        return String.format(Ui.RECORD_DETAILS_FORMAT_STRING,
+                book.getId(), book.getTitle(), book.getAuthor(), book.getYear(), library.getBorrower(book));
     }
 
     private static String expectedFormat(Movie movie) {

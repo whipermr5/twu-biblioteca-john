@@ -1,6 +1,7 @@
 package com.twu.biblioteca.common;
 
 import com.twu.biblioteca.library.Book;
+import com.twu.biblioteca.library.Library;
 import com.twu.biblioteca.library.Movie;
 
 import java.io.InputStream;
@@ -45,6 +46,7 @@ public class Ui {
     public static final String SELECT_MOVIE_RETURN = "Enter ID of movie to return: ";
     public static final String NO_BOOKS_AVAILABLE = "No books available!";
     public static final String NO_BOOKS_CHECKED_OUT = "You have not checked out any books.";
+    public static final String NO_RECORDS = "No customer has checked out any books.";
     public static final String NO_MOVIES_AVAILABLE = "No movies available!";
     public static final String NO_MOVIES_CHECKED_OUT = "You have not checked out any movies.";
     public static final String CHECKOUT_BOOK_SUCCESS = "Thank you! Enjoy the book";
@@ -65,6 +67,14 @@ public class Ui {
     static final String BOOK_LIST_HEADER =
             String.format(Ui.BOOK_DETAILS_FORMAT_STRING, "ID", "Title", "Author", "Year") + System.lineSeparator()
             + "---------------------------------------------------------------------------";
+
+    static final String RECORDS =
+            "-------------------------- Books Customers Have Checked Out --------------------------";
+    static final String RECORD_DETAILS_FORMAT_STRING = "%n%-2s | %-40s | %-20s | %-4s | %8s";
+    static final String RECORD_LIST_HEADER =
+            String.format(Ui.RECORD_DETAILS_FORMAT_STRING, "ID", "Title", "Author", "Year", "Customer")
+            + System.lineSeparator()
+            + "--------------------------------------------------------------------------------------";
 
     static final String MOVIES_AVAILABLE =
             "----------------------------- Movies Available for Checkout -----------------------------";
@@ -118,6 +128,24 @@ public class Ui {
 
     public static String formatBooksCheckedOut(List<Book> books) {
         return formatBooks(books, BOOKS_CHECKED_OUT, NO_BOOKS_CHECKED_OUT);
+    }
+
+    public static String formatBookRecords(List<Book> books, Library library) {
+        if (books == null) {
+            return null;
+        }
+
+        if (books.isEmpty()) {
+            return NO_RECORDS;
+        }
+
+        StringBuilder sb = new StringBuilder(RECORDS);
+        sb.append(RECORD_LIST_HEADER);
+        for (Book book : books) {
+            sb.append(String.format(RECORD_DETAILS_FORMAT_STRING,
+                    book.getId(), book.getTitle(), book.getAuthor(), book.getYear(), library.getBorrower(book)));
+        }
+        return sb.toString();
     }
 
     private static String formatMovies(List<Movie> movies, String title, String emptyMessage) {

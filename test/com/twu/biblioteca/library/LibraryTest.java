@@ -108,4 +108,10 @@ public class LibraryTest {
         Session session2 = library.getSession();
         assertEquals(session1, session2);
     }
+
+    @Test
+    public void testGetBorrower() {
+        library.checkoutItem(firstItem.getId(), "abc");
+        assertEquals("abc", library.getBorrower(firstItem));
+    }
 }

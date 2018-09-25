@@ -65,11 +65,11 @@ public class Library {
         return session;
     }
 
-    private boolean isAvailable(Item item) {
-        return !itemBorrowerMap.containsKey(item.getId());
+    public String getBorrower(Item item) {
+        return itemBorrowerMap.get(item.getId());
     }
 
-    private String getBorrower(Item item) {
-        return itemBorrowerMap.get(item.getId());
+    private boolean isAvailable(Item item) {
+        return !itemBorrowerMap.containsKey(item.getId());
     }
 }
