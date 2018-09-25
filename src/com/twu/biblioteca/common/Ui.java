@@ -22,6 +22,7 @@ public class Ui {
 
     public static final String WELCOME = "Welcome!";
     public static final String MENU = System.lineSeparator() + "------ MENU -------" + System.lineSeparator()
+            + ID_LOGIN + " - Login" + System.lineSeparator()
             + ID_LIST_BOOKS + " - List Books" + System.lineSeparator()
             + ID_LIST_MOVIES + " - List Movies" + System.lineSeparator()
             + ID_CHECKOUT_BOOK + " - Checkout Book" + System.lineSeparator()
@@ -31,6 +32,10 @@ public class Ui {
             + ID_QUIT + " - Quit" + System.lineSeparator()
             + "Please select an option: ";
     public static final String INVALID_OPTION = "Select a valid option!";
+    public static final String LOGIN_PROMPT_USERNAME = "Library number: ";
+    public static final String LOGIN_PROMPT_PASSWORD = "Password: ";
+    public static final String LOGIN_SUCCESS_FORMAT = "Logged into account %s.";
+    public static final String LOGIN_FAILURE = "Access denied.";
     public static final String SELECT_BOOK_CHECKOUT = "Enter ID of book to checkout: ";
     public static final String SELECT_BOOK_RETURN = "Enter ID of book to return: ";
     public static final String SELECT_MOVIE_CHECKOUT = "Enter ID of movie to checkout: ";
