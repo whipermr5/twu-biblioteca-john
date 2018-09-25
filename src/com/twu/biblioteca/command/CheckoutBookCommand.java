@@ -19,7 +19,7 @@ public class CheckoutBookCommand extends BookCommand {
         if (!session.isUserLoggedIn()) {
             return;
         }
-        out.println(Ui.formatBooksAvailable(getAvailableBooks(library)));
+        new ListBooksCommand().execute(library, in, out);
         String bookId = Ui.getUserInput(in, out, Ui.SELECT_BOOK_CHECKOUT);
         if (!isBook(library.getItem(bookId))) {
             out.println(Ui.CHECKOUT_BOOK_FAILURE);

@@ -13,7 +13,7 @@ public class CheckoutMovieCommand extends MovieCommand {
             out.println(Ui.NO_MOVIES_AVAILABLE);
             return;
         }
-        out.println(Ui.formatMoviesAvailable(getAvailableMovies(library)));
+        new ListMoviesCommand().execute(library, in, out);
         String movieId = Ui.getUserInput(in, out, Ui.SELECT_MOVIE_CHECKOUT);
         if (!isMovie(library.getItem(movieId))) {
             out.println(Ui.CHECKOUT_MOVIE_FAILURE);
