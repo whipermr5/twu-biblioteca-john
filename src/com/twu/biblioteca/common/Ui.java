@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class Ui {
 
+    public static final String ID_LOGIN = "li";
     public static final String ID_LIST_BOOKS = "lb";
     public static final String ID_LIST_MOVIES = "lm";
     public static final String ID_CHECKOUT_BOOK = "cb";

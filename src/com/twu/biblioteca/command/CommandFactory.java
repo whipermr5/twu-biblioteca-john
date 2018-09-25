@@ -5,6 +5,9 @@ import com.twu.biblioteca.common.Ui;
 public class CommandFactory {
 
     public static Command get(String userInput) {
+        if (Ui.ID_LOGIN.equals(userInput)) {
+            return new LoginCommand();
+        }
         if (Ui.ID_LIST_BOOKS.equals(userInput)) {
             return new ListBooksCommand();
         }
