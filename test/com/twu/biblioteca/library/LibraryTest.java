@@ -1,5 +1,6 @@
 package com.twu.biblioteca.library;
 
+import com.twu.biblioteca.common.Session;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,6 +11,7 @@ import java.util.List;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 public class LibraryTest {
@@ -96,5 +98,14 @@ public class LibraryTest {
         assertEquals(Arrays.asList(firstItem, secondItem, thirdItem, fourthItem), library.getAvailableItems());
 
         assertFalse(library.returnItem(firstItem.getId(), "user"));
+    }
+
+    @Test
+    public void testGetSession() {
+        Session session1 = library.getSession();
+        assertNotNull(session1);
+
+        Session session2 = library.getSession();
+        assertEquals(session1, session2);
     }
 }

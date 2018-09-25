@@ -1,5 +1,7 @@
 package com.twu.biblioteca.library;
 
+import com.twu.biblioteca.common.Session;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +12,8 @@ public class Library {
     private List<Item> items;
 
     private HashMap<String, String> itemBorrowerMap = new HashMap<>();
+
+    private Session session = new Session();
 
     public Library() {
         items = Arrays.asList(
@@ -55,6 +59,10 @@ public class Library {
             }
         }
         return false;
+    }
+
+    public Session getSession() {
+        return session;
     }
 
     private boolean isAvailable(Item item) {
