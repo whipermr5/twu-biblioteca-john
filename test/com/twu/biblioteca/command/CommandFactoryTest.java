@@ -11,6 +11,7 @@ public class CommandFactoryTest {
     public void testGet() {
         assertEquals(LoginCommand.class, CommandFactory.get(Ui.ID_LOGIN).getClass());
         assertEquals(LogoutCommand.class, CommandFactory.get(Ui.ID_LOGOUT).getClass());
+        assertEquals(UserInfoCommand.class, CommandFactory.get(Ui.ID_USER_INFO).getClass());
         assertEquals(ListBooksCommand.class, CommandFactory.get(Ui.ID_LIST_BOOKS).getClass());
         assertEquals(ListRecordsCommand.class, CommandFactory.get(Ui.ID_LIST_RECORDS).getClass());
         assertEquals(ListMoviesCommand.class, CommandFactory.get(Ui.ID_LIST_MOVIES).getClass());

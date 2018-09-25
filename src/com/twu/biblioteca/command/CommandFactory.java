@@ -11,6 +11,9 @@ public class CommandFactory {
         if (Ui.ID_LOGOUT.equals(userInput)) {
             return new LogoutCommand();
         }
+        if (Ui.ID_USER_INFO.equals(userInput)) {
+            return new UserInfoCommand();
+        }
         if (Ui.ID_LIST_BOOKS.equals(userInput)) {
             return new ListBooksCommand();
         }
