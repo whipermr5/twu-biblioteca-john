@@ -12,7 +12,6 @@ public class LoginCommand extends Command {
     public void execute(Library library, InputStream in, PrintStream out) {
         Session session = library.getSession();
         if (session.isUserLoggedIn()) {
-            out.println(String.format(Ui.LOGIN_SUCCESS_FORMAT, session.getCurrentUser().getUsername()));
             return;
         }
         String[] inputs = Ui.getUserInputs(in, out, Ui.LOGIN_PROMPT_USERNAME, Ui.LOGIN_PROMPT_PASSWORD);

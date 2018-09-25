@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class LoginCommandTest {
 
@@ -34,9 +35,8 @@ public class LoginCommandTest {
         command.execute(library, in, out);
         assertEquals(expected, out.toString());
 
-        expected = String.format(Ui.LOGIN_SUCCESS_FORMAT, "valid username") + System.lineSeparator();
         out = new ByteArrayOutputStream();
         command.execute(library, null, out);
-        assertEquals(expected, out.toString());
+        assertTrue(out.toString().isEmpty());
     }
 }
