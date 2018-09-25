@@ -37,6 +37,8 @@ public class Ui {
     public static final String LOGIN_PROMPT_PASSWORD = "Password: ";
     public static final String LOGIN_SUCCESS_FORMAT = "Logged into account %s.";
     public static final String LOGIN_FAILURE = "Access denied.";
+    public static final String LOGOUT_SUCCESS = "Logged out successfully.";
+    public static final String LOGOUT_FAILURE = "You are not logged in.";
     public static final String SELECT_BOOK_CHECKOUT = "Enter ID of book to checkout: ";
     public static final String SELECT_BOOK_RETURN = "Enter ID of book to return: ";
     public static final String SELECT_MOVIE_CHECKOUT = "Enter ID of movie to checkout: ";
