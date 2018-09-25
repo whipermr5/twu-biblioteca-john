@@ -10,6 +10,7 @@ public class CommandFactoryTest {
     @Test
     public void testGet() {
         assertEquals(LoginCommand.class, CommandFactory.get(Ui.ID_LOGIN).getClass());
+        assertEquals(LogoutCommand.class, CommandFactory.get(Ui.ID_LOGOUT).getClass());
         assertEquals(ListBooksCommand.class, CommandFactory.get(Ui.ID_LIST_BOOKS).getClass());
         assertEquals(ListMoviesCommand.class, CommandFactory.get(Ui.ID_LIST_MOVIES).getClass());
         assertEquals(CheckoutBookCommand.class, CommandFactory.get(Ui.ID_CHECKOUT_BOOK).getClass());
