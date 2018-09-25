@@ -11,10 +11,10 @@ public class Session {
 
     public Session() {
         users = Arrays.asList(
-                new User("librarian", "librarian password"),
-                new User("valid username", "valid password"),
-                new User("000-0000", "0"),
-                new User("123-4567", "password"));
+                new User("librarian", "librarian password", "Librarian", "l@lib", 0),
+                new User("valid username", "valid password", "", "", 0),
+                new User("000-0000", "0", "0", "0@0", 0),
+                new User("123-4567", "password", "John", "j@john.com", 7));
     }
 
     public User getCurrentUser() {
