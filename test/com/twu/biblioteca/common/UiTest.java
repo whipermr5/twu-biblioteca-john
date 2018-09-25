@@ -109,6 +109,15 @@ public class UiTest {
                 Ui.formatMoviesCheckedOut(Collections.singletonList(movie)));
     }
 
+    @Test
+    public void testFormatUserInfo() {
+        assertNull(Ui.formatUserInfo(null));
+
+        User user = new User("123-4567", "", "John", "j@john", 12345678);
+
+        assertEquals(expectedFormat(user), Ui.formatUserInfo(user));
+    }
+
     private static String expectedFormat(Book book) {
         return String.format(Ui.BOOK_DETAILS_FORMAT_STRING,
                 book.getId(), book.getTitle(), book.getAuthor(), book.getYear());
@@ -122,5 +131,9 @@ public class UiTest {
     private static String expectedFormat(Movie movie) {
         return String.format(Ui.MOVIE_DETAILS_FORMAT_STRING,
                 movie.getId(), movie.getName(), movie.getYear(), movie.getDirector(), movie.getRating());
+    }
+
+    private static String expectedFormat(User user) {
+        return String.format(Ui.USER_INFO_FORMAT_STRING, user.getUsername(), user.getName(), user.getEmail(), user.getNumber());
     }
 }

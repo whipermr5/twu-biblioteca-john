@@ -87,6 +87,10 @@ public class Ui {
             + System.lineSeparator()
             + "-----------------------------------------------------------------------------------------";
 
+    static final String USER_INFO_FORMAT_STRING = "------- Your Info -------" + System.lineSeparator()
+            + "Library number: %s%nName: %s%nEmail: %s%nNumber: %s" + System.lineSeparator()
+            + "-------------------------";
+
     public static final String RATING_SYMBOL = "*";
     public static final String UNRATED = "Unrated";
 
@@ -173,5 +177,14 @@ public class Ui {
 
     public static String formatMoviesCheckedOut(List<Movie> movies) {
         return formatMovies(movies, MOVIES_CHECKED_OUT, NO_MOVIES_CHECKED_OUT);
+    }
+
+    public static String formatUserInfo(User user) {
+        if (user == null) {
+            return null;
+        }
+
+        return String.format(USER_INFO_FORMAT_STRING,
+                user.getUsername(), user.getName(), user.getEmail(), user.getNumber());
     }
 }
