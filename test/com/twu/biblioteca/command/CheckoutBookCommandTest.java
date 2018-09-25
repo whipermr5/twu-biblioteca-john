@@ -19,7 +19,7 @@ public class CheckoutBookCommandTest {
     @Test
     public void testExecute() {
         Library library = new Library();
-        Command command = CommandFactory.get(Ui.ID_CHECKOUT);
+        Command command = CommandFactory.get(Ui.ID_CHECKOUT_BOOK);
 
         Book book = BookCommand.getAvailableBooks(library).iterator().next();
         InputStream in = new ByteArrayInputStream(book.getId().getBytes());

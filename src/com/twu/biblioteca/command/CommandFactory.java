@@ -11,7 +11,7 @@ public class CommandFactory {
         if (Ui.ID_LIST_MOVIES.equals(userInput)) {
             return new ListMoviesCommand();
         }
-        if (Ui.ID_CHECKOUT.equals(userInput)) {
+        if (Ui.ID_CHECKOUT_BOOK.equals(userInput)) {
             return new CheckoutBookCommand();
         }
         if (Ui.ID_CHECKOUT_MOVIE.equals(userInput)) {
