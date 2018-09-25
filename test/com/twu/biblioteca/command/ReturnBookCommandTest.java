@@ -14,6 +14,7 @@ import java.util.Collections;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class ReturnBookCommandTest {
 
@@ -22,29 +23,40 @@ public class ReturnBookCommandTest {
         Library library = new Library();
         Command command = CommandFactory.get(Ui.ID_RETURN_BOOK);
 
+        String credentials = "invalid username" + System.lineSeparator() + "some password";
+        InputStream in = new ByteArrayInputStream(credentials.getBytes());
+        OutputStream out = new ByteArrayOutputStream();
+        String expected = Ui.LOGIN_PROMPT_USERNAME + Ui.LOGIN_PROMPT_PASSWORD + System.lineSeparator()
+                + Ui.LOGIN_FAILURE + System.lineSeparator();
+        command.execute(library, in, out);
+        assertEquals(expected, out.toString());
+
+        String username = "valid username";
+        assertTrue(library.getSession().login(username, "valid password"));
+
         Book firstBook = BookCommand.getAvailableBooks(library).get(0);
         Book secondBook = BookCommand.getAvailableBooks(library).get(1);
-        OutputStream out = new ByteArrayOutputStream();
+        out = new ByteArrayOutputStream();
         command.execute(library, null, out);
         assertEquals(Ui.NO_BOOKS_CHECKED_OUT + System.lineSeparator(), out.toString());
 
-        library.checkoutItem(firstBook.getId(), "user");
-        assertEquals(Collections.singletonList(firstBook), BookCommand.getBooksBorrowedBy(library, "user"));
-        InputStream in = new ByteArrayInputStream(secondBook.getId().getBytes());
+        library.checkoutItem(firstBook.getId(), username);
+        assertEquals(Collections.singletonList(firstBook), BookCommand.getBooksBorrowedBy(library, username));
+        in = new ByteArrayInputStream(secondBook.getId().getBytes());
         out = new ByteArrayOutputStream();
-        String expected = Ui.formatBooksCheckedOut(
-                BookCommand.getBooksBorrowedBy(library, "user")) + System.lineSeparator()
+        expected = Ui.formatBooksCheckedOut(
+                BookCommand.getBooksBorrowedBy(library, username)) + System.lineSeparator()
                 + Ui.SELECT_BOOK_RETURN + System.lineSeparator()
                 + Ui.RETURN_BOOK_FAILURE + System.lineSeparator();
         command.execute(library, in, out);
         assertEquals(expected, out.toString());
 
         Movie movie = MovieCommand.getAvailableMovies(library).iterator().next();
-        library.checkoutItem(movie.getId(), "user");
+        library.checkoutItem(movie.getId(), username);
         in = new ByteArrayInputStream(movie.getId().getBytes());
         out = new ByteArrayOutputStream();
         expected = Ui.formatBooksCheckedOut(
-                BookCommand.getBooksBorrowedBy(library, "user")) + System.lineSeparator()
+                BookCommand.getBooksBorrowedBy(library, username)) + System.lineSeparator()
                 + Ui.SELECT_BOOK_RETURN + System.lineSeparator()
                 + Ui.RETURN_BOOK_FAILURE + System.lineSeparator();
         command.execute(library, in, out);
@@ -53,11 +65,11 @@ public class ReturnBookCommandTest {
         in = new ByteArrayInputStream(firstBook.getId().getBytes());
         out = new ByteArrayOutputStream();
         expected = Ui.formatBooksCheckedOut(
-                BookCommand.getBooksBorrowedBy(library, "user")) + System.lineSeparator()
+                BookCommand.getBooksBorrowedBy(library, username)) + System.lineSeparator()
                 + Ui.SELECT_BOOK_RETURN + System.lineSeparator()
                 + Ui.RETURN_BOOK_SUCCESS + System.lineSeparator();
         command.execute(library, in, out);
         assertEquals(expected, out.toString());
-        assertFalse(BookCommand.getBooksBorrowedBy(library, "user").contains(firstBook));
+        assertFalse(BookCommand.getBooksBorrowedBy(library, username).contains(firstBook));
     }
 }
