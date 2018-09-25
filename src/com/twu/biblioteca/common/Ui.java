@@ -15,6 +15,7 @@ public class Ui {
     public static final String ID_LOGIN = "li";
     public static final String ID_LOGOUT = "lo";
     public static final String ID_LIST_BOOKS = "lb";
+    public static final String ID_LIST_RECORDS = "lr";
     public static final String ID_LIST_MOVIES = "lm";
     public static final String ID_CHECKOUT_BOOK = "cb";
     public static final String ID_CHECKOUT_MOVIE = "cm";
