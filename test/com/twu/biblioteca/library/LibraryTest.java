@@ -18,6 +18,7 @@ public class LibraryTest {
     private static Item firstItem;
     private static Item secondItem;
     private static Item thirdItem;
+    private static Item fourthItem;
 
     @Before
     public void setUpLibrary() {
@@ -26,6 +27,7 @@ public class LibraryTest {
         firstItem = items.get(0);
         secondItem = items.get(1);
         thirdItem = items.get(2);
+        fourthItem = items.get(3);
     }
 
     @Test
@@ -35,7 +37,7 @@ public class LibraryTest {
         library.checkoutItem(firstItem.getId(), "user");
 
         assertTrue(originalItems.contains(firstItem));
-        assertEquals(Arrays.asList(secondItem, thirdItem), library.getAvailableItems());
+        assertEquals(Arrays.asList(secondItem, thirdItem, fourthItem), library.getAvailableItems());
     }
 
     @Test
@@ -61,7 +63,10 @@ public class LibraryTest {
     @Test
     public void testCheckoutItem() {
         List<Item> originalItems = library.getAvailableItems();
-        assertEquals(Arrays.asList(firstItem, secondItem, thirdItem), originalItems);
+        assertEquals(Arrays.asList(firstItem, secondItem, thirdItem, fourthItem), originalItems);
+
+        assertTrue(library.checkoutItem(fourthItem.getId(), "user"));
+        assertEquals(Arrays.asList(firstItem, secondItem, thirdItem), library.getAvailableItems());
 
         assertTrue(library.checkoutItem(firstItem.getId(), "user"));
         assertEquals(Arrays.asList(secondItem, thirdItem), library.getAvailableItems());
@@ -80,15 +85,15 @@ public class LibraryTest {
         library.checkoutItem(firstItem.getId(), "user");
         library.checkoutItem(secondItem.getId(), "user");
         assertEquals(Arrays.asList(firstItem, secondItem), library.getItemsBorrowedBy("user"));
-        assertEquals(Collections.singletonList(thirdItem), library.getAvailableItems());
+        assertEquals(Arrays.asList(thirdItem, fourthItem), library.getAvailableItems());
 
         assertTrue(library.returnItem(firstItem.getId(), "user"));
         assertEquals(Collections.singletonList(secondItem), library.getItemsBorrowedBy("user"));
-        assertEquals(Arrays.asList(firstItem, thirdItem), library.getAvailableItems());
+        assertEquals(Arrays.asList(firstItem, thirdItem, fourthItem), library.getAvailableItems());
 
         assertTrue(library.returnItem(secondItem.getId(), "user"));
         assertTrue(library.getItemsBorrowedBy("user").isEmpty());
-        assertEquals(Arrays.asList(firstItem, secondItem, thirdItem), library.getAvailableItems());
+        assertEquals(Arrays.asList(firstItem, secondItem, thirdItem, fourthItem), library.getAvailableItems());
 
         assertFalse(library.returnItem(firstItem.getId(), "user"));
     }

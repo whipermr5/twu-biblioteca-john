@@ -15,7 +15,8 @@ public class Library {
         items = Arrays.asList(
                 new Book("Test-driven Development: By Example", "Kent Beck", 2002),
                 new Book("Refactoring", "Martin Fowler", 1999),
-                new Movie("The Day After Tomorrow", 2004, "Roland Emmerich", Rating.SIX)
+                new Movie("The Day After Tomorrow", 2004, "Roland Emmerich", Rating.SIX),
+                new Movie("The Incredibles", 2004, "Brad Bird", Rating.EIGHT)
         );
     }
 
