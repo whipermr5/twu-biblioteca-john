@@ -43,6 +43,17 @@ public class LibraryTest {
     }
 
     @Test
+    public void testGetUnavailableItems() {
+        assertTrue(library.getUnavailableItems().isEmpty());
+
+        library.checkoutItem(firstItem.getId(), "abc");
+        assertEquals(Collections.singletonList(firstItem), library.getUnavailableItems());
+
+        library.checkoutItem(secondItem.getId(), "def");
+        assertEquals(Arrays.asList(firstItem, secondItem), library.getUnavailableItems());
+    }
+
+    @Test
     public void testGetItemsBorrowedBy() {
         assertTrue(library.getItemsBorrowedBy("user").isEmpty());
 

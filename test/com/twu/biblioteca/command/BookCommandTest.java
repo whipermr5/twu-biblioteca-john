@@ -35,6 +35,15 @@ public class BookCommandTest {
     }
 
     @Test
+    public void testGetUnavailableBooks() {
+        Book remainingBook = (Book) library.getAvailableItems().get(0);
+        library.checkoutItem(remainingBook.getId(), "other user");
+        List<Book> expected = library.getUnavailableItems().stream()
+                .filter(item -> item instanceof Book).map(Book.class::cast).collect(Collectors.toList());
+        assertEquals(expected, BookCommand.getUnavailableBooks(library));
+    }
+
+    @Test
     public void testGetBooksBorrowedBy() {
         assertEquals(Collections.singletonList(firstItem), BookCommand.getBooksBorrowedBy(library, "user"));
     }

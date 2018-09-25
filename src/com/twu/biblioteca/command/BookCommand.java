@@ -14,6 +14,11 @@ abstract class BookCommand extends Command {
                 .collect(Collectors.toList());
     }
 
+    static List<Book> getUnavailableBooks(Library library) {
+        return library.getUnavailableItems().stream().filter(item -> item instanceof Book).map(Book.class::cast)
+                .collect(Collectors.toList());
+    }
+
     static List<Book> getBooksBorrowedBy(Library library, String borrowerId) {
         return library.getItemsBorrowedBy(borrowerId).stream()
                 .filter(item -> item instanceof Book).map(Book.class::cast)

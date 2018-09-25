@@ -28,6 +28,10 @@ public class Library {
         return items.stream().filter(this::isAvailable).collect(Collectors.toList());
     }
 
+    public List<Item> getUnavailableItems() {
+        return items.stream().filter(item -> !isAvailable(item)).collect(Collectors.toList());
+    }
+
     public List<Item> getItemsBorrowedBy(String borrowerId) {
         return items.stream().filter(item -> borrowerId.equals(getBorrower(item))).collect(Collectors.toList());
     }
