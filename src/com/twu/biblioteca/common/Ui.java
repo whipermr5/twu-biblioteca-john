@@ -14,7 +14,7 @@ public class Ui {
 
     public static final String ID_LOGIN = "li";
     public static final String ID_LOGOUT = "lo";
-    public static final String ID_USER_INFO = "ui";
+    public static final String ID_USER_INFO = "mi";
     public static final String ID_LIST_BOOKS = "lb";
     public static final String ID_LIST_RECORDS = "lr";
     public static final String ID_LIST_MOVIES = "lm";
@@ -24,17 +24,50 @@ public class Ui {
     public static final String ID_RETURN_MOVIE = "rm";
     public static final String ID_QUIT = "q";
 
+    private static final String MENU_HEADER = System.lineSeparator() + "------ MENU -------";
+    private static final String MENU_PROMPT = "Please select an option: ";
+    private static final String MENU_ITEM_LOGIN = ID_LOGIN + " - Login";
+    private static final String MENU_ITEM_LOGOUT = ID_LOGOUT + " - Logout";
+    private static final String MENU_ITEM_USER_INFO = ID_USER_INFO + " - My Info";
+    private static final String MENU_ITEM_LIST_RECORDS = ID_LIST_RECORDS + " - List Checkout Records";
+    private static final String MENU_ITEM_LIST_BOOKS = ID_LIST_BOOKS + " - List Books";
+    private static final String MENU_ITEM_LIST_MOVIES = ID_LIST_MOVIES + " - List Movies";
+    private static final String MENU_ITEM_CHECKOUT_BOOK = ID_CHECKOUT_BOOK + " - Checkout Book";
+    private static final String MENU_ITEM_CHECKOUT_MOVIE = ID_CHECKOUT_MOVIE + " - Checkout Movie";
+    private static final String MENU_ITEM_RETURN_BOOK = ID_RETURN_BOOK + " - Return Book";
+    private static final String MENU_ITEM_RETURN_MOVIE = ID_RETURN_MOVIE + " - Return Movie";
+    private static final String MENU_ITEM_QUIT = ID_QUIT + " - Quit";
+
+    static final String MENU_GUEST = MENU_HEADER + System.lineSeparator()
+            + MENU_ITEM_LOGIN + System.lineSeparator()
+            + MENU_ITEM_LIST_BOOKS + System.lineSeparator()
+            + MENU_ITEM_LIST_MOVIES + System.lineSeparator()
+            + MENU_ITEM_CHECKOUT_BOOK + System.lineSeparator()
+            + MENU_ITEM_CHECKOUT_MOVIE + System.lineSeparator()
+            + MENU_ITEM_RETURN_BOOK + System.lineSeparator()
+            + MENU_ITEM_RETURN_MOVIE + System.lineSeparator()
+            + MENU_ITEM_QUIT + System.lineSeparator()
+            + MENU_PROMPT;
+    static final String MENU_USER = MENU_HEADER + System.lineSeparator()
+            + MENU_ITEM_USER_INFO + System.lineSeparator()
+            + MENU_ITEM_LIST_BOOKS + System.lineSeparator()
+            + MENU_ITEM_LIST_MOVIES + System.lineSeparator()
+            + MENU_ITEM_CHECKOUT_BOOK + System.lineSeparator()
+            + MENU_ITEM_CHECKOUT_MOVIE + System.lineSeparator()
+            + MENU_ITEM_RETURN_BOOK + System.lineSeparator()
+            + MENU_ITEM_RETURN_MOVIE + System.lineSeparator()
+            + MENU_ITEM_LOGOUT + System.lineSeparator()
+            + MENU_ITEM_QUIT + System.lineSeparator()
+            + MENU_PROMPT;
+    static final String MENU_LIBRARIAN = MENU_HEADER + System.lineSeparator()
+            + MENU_ITEM_LIST_RECORDS + System.lineSeparator()
+            + MENU_ITEM_LIST_BOOKS + System.lineSeparator()
+            + MENU_ITEM_LIST_MOVIES + System.lineSeparator()
+            + MENU_ITEM_LOGOUT + System.lineSeparator()
+            + MENU_ITEM_QUIT + System.lineSeparator()
+            + MENU_PROMPT;
+
     public static final String WELCOME = "Welcome!";
-    public static final String MENU = System.lineSeparator() + "------ MENU -------" + System.lineSeparator()
-            + ID_LOGIN + " - Login" + System.lineSeparator()
-            + ID_LIST_BOOKS + " - List Books" + System.lineSeparator()
-            + ID_LIST_MOVIES + " - List Movies" + System.lineSeparator()
-            + ID_CHECKOUT_BOOK + " - Checkout Book" + System.lineSeparator()
-            + ID_CHECKOUT_MOVIE + " - Checkout Movie" + System.lineSeparator()
-            + ID_RETURN_BOOK + " - Return Book" + System.lineSeparator()
-            + ID_RETURN_MOVIE + " - Return Movie" + System.lineSeparator()
-            + ID_QUIT + " - Quit" + System.lineSeparator()
-            + "Please select an option: ";
     public static final String INVALID_OPTION = "Select a valid option!";
     public static final String LOGIN_PROMPT_USERNAME = "Library number: ";
     public static final String LOGIN_PROMPT_PASSWORD = "Password: ";
@@ -94,6 +127,16 @@ public class Ui {
 
     public static final String RATING_SYMBOL = "*";
     public static final String UNRATED = "Unrated";
+
+    public static String getAppropriateMenu(Session session) {
+        if (session.isAdminLoggedIn()) {
+            return MENU_LIBRARIAN;
+        }
+        if (session.isUserLoggedIn()) {
+            return MENU_USER;
+        }
+        return MENU_GUEST;
+    }
 
     public static String getUserInput(InputStream in, PrintStream out, String messageToUser) {
         return getUserInputs(in, out, messageToUser)[0];

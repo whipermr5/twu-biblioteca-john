@@ -14,9 +14,29 @@ import java.util.Collections;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 public class UiTest {
+
+    @Test
+    public void testGetAppropriateMenu() {
+        Session session = new Session();
+
+        assertFalse(session.isUserLoggedIn());
+        assertEquals(Ui.MENU_GUEST, Ui.getAppropriateMenu(session));
+
+        session.login("librarian", "librarian password");
+        assertTrue(session.isUserLoggedIn());
+        assertTrue(session.isAdminLoggedIn());
+        assertEquals(Ui.MENU_LIBRARIAN, Ui.getAppropriateMenu(session));
+
+        session.login("123-4567", "password");
+        assertTrue(session.isUserLoggedIn());
+        assertFalse(session.isAdminLoggedIn());
+        assertEquals(Ui.MENU_USER, Ui.getAppropriateMenu(session));
+    }
 
     @Test
     public void testGetUserInput() {

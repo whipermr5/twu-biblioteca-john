@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.command.ListBooksCommand;
 import com.twu.biblioteca.command.QuitCommand;
+import com.twu.biblioteca.common.Session;
 import com.twu.biblioteca.common.Ui;
 import org.junit.After;
 import org.junit.Before;
@@ -37,7 +38,7 @@ public class BibliotecaAppTest {
     public void testWelcome() {
         BibliotecaApp.main(new String[] {});
         String expected = Ui.WELCOME + System.lineSeparator()
-                + Ui.MENU + System.lineSeparator()
+                + Ui.getAppropriateMenu(new Session()) + System.lineSeparator()
                 + Ui.GOODBYE + System.lineSeparator();
         assertEquals(expected, getOutput());
     }
@@ -45,7 +46,7 @@ public class BibliotecaAppTest {
     @Test
     public void testGetUserChoice() {
         BibliotecaApp.getUserChoice();
-        String expected = Ui.MENU + System.lineSeparator();
+        String expected = Ui.getAppropriateMenu(new Session()) + System.lineSeparator();
         assertEquals(expected, getOutput());
 
         System.setIn(getInputStream(Ui.ID_LIST_BOOKS));
